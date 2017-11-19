@@ -117,5 +117,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# lang setting
 export LANG='ja_JP.UTF-8'
 
