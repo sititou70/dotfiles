@@ -563,22 +563,35 @@ else
   let g:airline_symbols.linenr = ''
 endif
 
+" jump cursor natural
 set whichwrap=b,s,<,>,[,]
 
+" when open vim, also open nerdtree
 let g:nerdtree_tabs_open_on_console_startup = 1
 let NERDTreeShowHidden = 1
 
+" auto complete
 set completeopt=menuone
 for k in split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_",'\zs')
   exec "imap <expr> " . k . " pumvisible() ? '" . k . "' : '" . k . "\<C-X>\<C-P>\<C-N>'"
 endfor
 
+" show invisible
 set list
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 
+" nowrap
 set nowrap
 
+" delete hilight when double press <ESC> key
 nnoremap <ESC><ESC> :nohl<CR>
 
-:set nobackup
+" don't make backupfile
+set nobackup
 
+" hilight current column
+set cursorline
+highlight CursorLine ctermbg=233
+
+" ajust MatchParen color
+hi MatchParen cterm=underline ctermfg=208 ctermbg=NONE
