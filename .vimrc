@@ -626,3 +626,13 @@ vnoremap <C-c> y
 vnoremap <C-x> d
 inoremap <C-v> <C-o>p
 
+" skip word or line when press ctrl+arrow
+nnoremap <C-Right> w
+nnoremap <C-Left> b
+nnoremap <C-Up> {
+nnoremap <C-Down> }
+inoremap <C-Right> w
+inoremap <C-Left> b
+inoremap <C-Up> {
+inoremap <C-Down> }
+
