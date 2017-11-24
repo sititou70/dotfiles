@@ -607,10 +607,10 @@ nnoremap <S-Down> v<Down>
 nnoremap <S-Left> v<Left>
 nnoremap <S-Right> v<Right>
 
-inoremap <S-Up> <ESC>v<Up>
-inoremap <S-Down> <ESC>v<Down>
-inoremap <S-Left> <ESC>v<Left>
-inoremap <S-Right> <ESC>v<Right>
+inoremap <S-Up> <C-o>v<Up>
+inoremap <S-Down> <C-o>v<Down>
+inoremap <S-Left> <C-o>v<Left>
+inoremap <S-Right> <C-o>v<Right>
 
 vnoremap <S-Up> <Up>
 vnoremap <S-Down> <Down>
@@ -623,4 +623,6 @@ vnoremap <Left> <ESC><Left>
 vnoremap <Right> <ESC><Right>
 
 vnoremap <C-c> y
+vnoremap <C-x> d
+inoremap <C-v> <C-o>p
 
