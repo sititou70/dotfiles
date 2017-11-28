@@ -31,6 +31,7 @@ call plug#begin(expand('~/.vim/plugged'))
 "*****************************************************************************
 "" Plug install packages
 "*****************************************************************************
+Plug 'terryma/vim-multiple-cursors'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
@@ -570,6 +571,10 @@ set whichwrap=b,s,<,>,[,]
 let g:nerdtree_tabs_open_on_console_startup = 1
 let NERDTreeShowHidden = 1
 
+" change nerd tree pain size more easy
+nnoremap < <C-w><
+nnoremap > <C-w>>
+
 " auto complete
 set completeopt=menuone
 for k in split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_",'\zs')
@@ -595,3 +600,39 @@ highlight CursorLine ctermbg=233
 
 " ajust MatchParen color
 hi MatchParen cterm=underline ctermfg=208 ctermbg=NONE
+
+" selecting and copy-paste more natural
+nnoremap <S-Up> v<Up>
+nnoremap <S-Down> v<Down>
+nnoremap <S-Left> v<Left>
+nnoremap <S-Right> v<Right>
+
+inoremap <S-Up> <C-o>v<Up>
+inoremap <S-Down> <C-o>v<Down>
+inoremap <S-Left> <C-o>v<Left>
+inoremap <S-Right> <C-o>v<Right>
+
+vnoremap <S-Up> <Up>
+vnoremap <S-Down> <Down>
+vnoremap <S-Left> <Left>
+vnoremap <S-Right> <Right>
+
+vnoremap <Up> <ESC><Up>
+vnoremap <Down> <ESC><Down>
+vnoremap <Left> <ESC><Left>
+vnoremap <Right> <ESC><Right>
+
+vnoremap <C-c> y
+vnoremap <C-x> d
+inoremap <C-v> <C-o>p
+
+" skip word or line when press ctrl+arrow
+nnoremap <C-Right> w
+nnoremap <C-Left> b
+nnoremap <C-Up> {
+nnoremap <C-Down> }
+inoremap <C-Right> w
+inoremap <C-Left> b
+inoremap <C-Up> {
+inoremap <C-Down> }
+
