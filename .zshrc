@@ -105,7 +105,6 @@ alias sudo='sudo '
 
 ########################################
 #Linux用の設定
-alias ls='ls -F --color=auto'
 
 # vim:set ft=zsh:
 
@@ -114,6 +113,9 @@ eval $(dircolors ~/.dircolors)
 if [ -n "$LS_COLORS" ]; then
     zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 fi
+
+# setting for nodebrew
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # Setting for NVM
 export NVM_DIR="$HOME/.nvm"
