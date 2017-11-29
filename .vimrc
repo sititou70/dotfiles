@@ -631,8 +631,13 @@ nnoremap <C-Right> w
 nnoremap <C-Left> b
 nnoremap <C-Up> {
 nnoremap <C-Down> }
-inoremap <C-Right> w
-inoremap <C-Left> b
-inoremap <C-Up> {
-inoremap <C-Down> }
+inoremap <C-Up> <C-o>{
+inoremap <C-Down> <C-o>}
+
+" undo when press ctrl+z
+nnoremap <C-z> u
+inoremap <C-z> <C-o>u
+
+" ignore case
+:set ignorecase
 
