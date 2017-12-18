@@ -601,6 +601,12 @@ highlight CursorLine ctermbg=233
 " ajust MatchParen color
 hi MatchParen cterm=underline ctermfg=208 ctermbg=NONE
 
+" display line cursor move
+nnoremap <C-Up> gk
+nnoremap <C-Down> gj
+inoremap <C-Up> <C-o>gk
+inoremap <C-Down> <C-o>gj
+
 " selecting and copy-paste more natural
 nnoremap <S-Up> v<Up>
 nnoremap <S-Down> v<Down>
@@ -626,13 +632,9 @@ vnoremap <C-c> y
 vnoremap <C-x> d
 inoremap <C-v> <C-o>p
 
-" skip word or line when press ctrl+arrow
+" skip word when press ctrl+arrow
 nnoremap <C-Right> w
 nnoremap <C-Left> b
-nnoremap <C-Up> {
-nnoremap <C-Down> }
-inoremap <C-Up> <C-o>{
-inoremap <C-Down> <C-o>}
 
 " undo when press ctrl+z
 nnoremap <C-z> u
