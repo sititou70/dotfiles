@@ -48,12 +48,28 @@ autoload -Uz vcs_info
 autoload -Uz add-zsh-hook
 
 # zstyle ':vcs_info:*' formats '%F{green}[%b]%f'
+zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' formats $'%F%{\e[0;36m%}% [%b]%{\e[0m%}%f'
 zstyle ':vcs_info:*' actionformats '%F{red}[%b|%a]%f'
 
+function _save_command_line() {
+  _pre_command_line=$1
+}
+add-zsh-hook preexec _save_command_line
+
 function _update_vcs_info_msg() {
-    LANG=en_US.UTF-8 vcs_info
-    RPROMPT="${vcs_info_msg_0_}"
+  case "${_pre_command_line}" in
+    cd*|git\ checkout*|git\ mrege*|git\ pull*|git\ branch\ -m*)
+      if test -d .git
+      then
+        LANG=en_US.UTF-8 vcs_info
+        RPROMPT="${vcs_info_msg_0_}"
+      else
+        RPROMPT=""
+      fi
+    ;;
+  esac
+  _pre_command_line=""
 }
 add-zsh-hook precmd _update_vcs_info_msg
 
@@ -111,16 +127,8 @@ alias sudo='sudo '
 # dircolors setting
 eval $(dircolors ~/.dircolors)
 if [ -n "$LS_COLORS" ]; then
-    zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+  zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 fi
-
-# setting for nodebrew
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-
-# Setting for NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # skipping word when press Ctrl+ArrowKey
 bindkey "^[[1;5C" forward-word
