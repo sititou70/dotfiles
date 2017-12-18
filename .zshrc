@@ -31,7 +31,7 @@ zstyle ':zle:*' word-style unspecified
 # 補完
 # 補完機能を有効にする
 autoload -U compinit
-compinit
+compinit -C
 zstyle ':completion:*:default' menu select=2
 
 # 補完で小文字でも大文字にマッチさせる
@@ -47,7 +47,6 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
 autoload -Uz vcs_info
 autoload -Uz add-zsh-hook
 
-# zstyle ':vcs_info:*' formats '%F{green}[%b]%f'
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' formats $'%F%{\e[0;36m%}% [%b]%{\e[0m%}%f'
 zstyle ':vcs_info:*' actionformats '%F{red}[%b|%a]%f'
@@ -118,6 +117,7 @@ alias mkdir='mkdir -p'
 
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
+
 
 ########################################
 #another settings
