@@ -106,7 +106,7 @@ setopt hist_ignore_all_dups
 
 ########################################
 # エイリアス
-
+alias ls='ls --color=auto'
 alias la='ls -a'
 alias ll='ls -al'
 
@@ -120,9 +120,7 @@ alias mkdir='mkdir -p'
 alias sudo='sudo '
 
 ########################################
-#Linux用の設定
-
-# vim:set ft=zsh:
+#another settings
 
 # dircolors setting
 eval $(dircolors ~/.dircolors)
