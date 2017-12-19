@@ -150,6 +150,9 @@ fi
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
+# kill word when press Ctrl+BackSpace
+bindkey "^_" backward-kill-word
+
 # substring search
 autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
