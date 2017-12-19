@@ -74,6 +74,24 @@ add-zsh-hook precmd _update_vcs_info_msg
 
 
 ########################################
+# fzf history search
+if [ ! -e ~/.fzf ];
+then
+  echo "no fzf at ~/.fzf, installing..."
+  git clone https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install
+fi
+
+function select-history() {
+  BUFFER=$(history -n -r 1 | ~/.fzf/bin/fzf --no-sort --height 40% +m --query "$LBUFFER" --prompt=" > ")
+  CURSOR=$#BUFFER
+}
+
+zle -N select-history
+bindkey '^r' select-history
+
+
+########################################
 # オプション
 # 日本語ファイル名を表示可能にする
 setopt print_eight_bit
