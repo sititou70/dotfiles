@@ -2,19 +2,6 @@
 # License : MIT
 # http://mollifier.mit-license.org/
 
-
-########################################
-# zplug
-if [ ! -e ~/.zplug ];
-then
-  echo "no zplug, installing..."
-  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
-  exit
-else
-  source ~/.zplug/init.zsh
-fi
-
-
 ########################################
 # 環境変数
 export LANG=ja_JP.UTF-8
@@ -146,9 +133,9 @@ bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
 # substring search
-zplug "zsh-users/zsh-history-substring-search"
-source ~/.zplug/repos/zsh-users/zsh-history-substring-search/zsh-history-substring-search.zsh
-bindkey "^[[1;5A" history-substring-search-up
-bindkey "^[[1;5B" history-substring-search-down
-
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^[OA" history-beginning-search-backward-end
+bindkey "^[OB" history-beginning-search-forward-end
 
