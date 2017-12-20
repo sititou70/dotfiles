@@ -630,6 +630,7 @@ vnoremap <Right> <ESC><Right>
 
 vnoremap <C-c> y
 vnoremap <C-x> d
+vnoremap <BS> d
 inoremap <C-v> <C-o>p
 
 " skip word when press ctrl+arrow
