@@ -628,9 +628,9 @@ vnoremap <Down> <ESC><Down>
 vnoremap <Left> <ESC><Left>
 vnoremap <Right> <ESC><Right>
 
-vnoremap <C-c> y
-vnoremap <C-x> d
-vnoremap <BS> d
+vnoremap <C-c> <Left>y
+vnoremap <C-x> <Left>d
+vnoremap <BS> <Left>d
 inoremap <C-v> <C-o>p
 
 " skip word when press ctrl+arrow
@@ -643,4 +643,7 @@ inoremap <C-z> <C-o>u
 
 " ignore case
 :set ignorecase
+
+" toggle paste mode
+set pastetoggle=<F2>
 
