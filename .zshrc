@@ -123,7 +123,12 @@ setopt hist_ignore_all_dups
 
 ########################################
 # エイリアス
-alias ls='ls --color=auto'
+case ${OSTYPE} in
+  linux*)
+    alias ls='ls --color=auto'
+    ;;
+esac
+
 alias la='ls -a'
 alias ll='ls -al'
 
@@ -162,3 +167,5 @@ bindkey "^[OB" history-beginning-search-forward-end
 bindkey "^[[A" history-beginning-search-backward-end
 bindkey "^[[B" history-beginning-search-forward-end
 
+
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
