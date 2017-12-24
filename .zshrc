@@ -174,4 +174,14 @@ if [ -e "$HOME/n" ]; then
   [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 fi
 
+# docker toolbox on windows
+DOCKER_MACHINE_NAME='default'
+for user in $(find /mnt/c/Users -maxdepth 1 -type d); do
+  if [ -e "$user/.docker/machine/machines/$DOCKER_MACHINE_NAME" ]; then
+    export DOCKER_TLS_VERIFY=1
+    export DOCKER_HOST='tcp://192.168.99.100:2376'
+    export DOCKER_CERT_PATH="$user/.docker/machine/machines/$DOCKER_MACHINE_NAME"
+    export DOCKER_MACHINE_NAME="$DOCKER_MACHINE_NAME"
+  fi
+done
 
