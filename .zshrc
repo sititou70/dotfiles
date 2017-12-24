@@ -18,12 +18,9 @@ SAVEHIST=1000000
 # 1行表示
 PROMPT=$'%{\e[0;37m%}%~%{\e[0;36m%}% $ %{\e[0m%}'
 
-
 # 単語の区切り文字を指定する
 autoload -Uz select-word-style
 select-word-style default
-# ここで指定した文字は単語区切りとみなされる
-# / も区切りと扱うので、^W でディレクトリ１つ分を削除できる
 zstyle ':zle:*' word-chars " /=;@:{},|"
 zstyle ':zle:*' word-style unspecified
 
@@ -40,6 +37,55 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # sudo の後ろでコマンド名を補完する
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
                    /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
+
+
+########################################
+# オプション
+# 日本語ファイル名を表示可能にする
+setopt print_eight_bit
+
+# beep を無効にする
+setopt no_beep
+
+# フローコントロールを無効にする
+setopt no_flow_control
+
+# Ctrl+Dでzshを終了しない
+setopt ignore_eof
+
+# '#' 以降をコメントとして扱う
+setopt interactive_comments
+
+# cd したら自動的にpushdする
+setopt auto_pushd
+
+# 重複したディレクトリを追加しない
+setopt pushd_ignore_dups
+
+# 同時に起動したzshの間でヒストリを共有する
+setopt share_history
+
+# 同じコマンドをヒストリに残さない
+setopt hist_ignore_all_dups
+
+
+########################################
+# key binndings
+# skipping word when press Ctrl+ArrowKey
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
+# kill word when press Ctrl+BackSpace
+bindkey "^_" backward-kill-word
+
+# substring search
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^[OA" history-beginning-search-backward-end
+bindkey "^[OB" history-beginning-search-forward-end
+bindkey "^[[A" history-beginning-search-backward-end
+bindkey "^[[B" history-beginning-search-forward-end
 
 
 ########################################
@@ -74,6 +120,30 @@ add-zsh-hook precmd _update_vcs_info_msg
 
 
 ########################################
+# エイリアス
+alias ls='ls --color=auto'
+alias la='ls -a'
+alias ll='ls -al'
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+alias mkdir='mkdir -p'
+
+# sudo の後のコマンドでエイリアスを有効にする
+alias sudo='sudo '
+
+
+########################################
+# dircolors setting
+eval $(dircolors ~/.dircolors)
+if [ -n "$LS_COLORS" ]; then
+  zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+fi
+
+
+########################################
 # fzf history search
 if [ ! -e ~/.fzf ];
 then
@@ -92,73 +162,11 @@ bindkey '^r' select-history
 
 
 ########################################
-# オプション
-# 日本語ファイル名を表示可能にする
-setopt print_eight_bit
-
-# beep を無効にする
-setopt no_beep
-
-# フローコントロールを無効にする
-setopt no_flow_control
-
-# Ctrl+Dでzshを終了しない
-setopt ignore_eof
-
-# '#' 以降をコメントとして扱う
-setopt interactive_comments
-
-# cd したら自動的にpushdする
-setopt auto_pushd
-
-# 重複したディレクトリを追加しない
-setopt pushd_ignore_dups
-
-# 同時に起動したzshの間でヒストリを共有する
-setopt share_history
-
-# 同じコマンドをヒストリに残さない
-setopt hist_ignore_all_dups
-
-
-########################################
-# エイリアス
-alias ls='ls --color=auto'
-alias la='ls -a'
-alias ll='ls -al'
-
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
-
-alias mkdir='mkdir -p'
-
-# sudo の後のコマンドでエイリアスを有効にする
-alias sudo='sudo '
-
-
-########################################
-#another settings
-
-# dircolors setting
-eval $(dircolors ~/.dircolors)
-if [ -n "$LS_COLORS" ]; then
-  zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# software settings
+# n
+if [ -e "$HOME/n" ]; then
+  export N_PREFIX="$HOME/n"
+  [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 fi
 
-# skipping word when press Ctrl+ArrowKey
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
-
-# kill word when press Ctrl+BackSpace
-bindkey "^_" backward-kill-word
-
-# substring search
-autoload -U history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^[OA" history-beginning-search-backward-end
-bindkey "^[OB" history-beginning-search-forward-end
-bindkey "^[[A" history-beginning-search-backward-end
-bindkey "^[[B" history-beginning-search-forward-end
 
