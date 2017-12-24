@@ -121,7 +121,12 @@ add-zsh-hook precmd _update_vcs_info_msg
 
 ########################################
 # エイリアス
-alias ls='ls --color=auto'
+case ${OSTYPE} in
+  linux*)
+    alias ls='ls --color=auto'
+    ;;
+esac
+
 alias la='ls -a'
 alias ll='ls -al'
 
