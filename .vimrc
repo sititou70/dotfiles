@@ -120,7 +120,7 @@ filetype plugin indent on
 "" Encoding
 set encoding=utf-8
 set fileencoding=utf-8
-set fileencodings=utf-8
+set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
 set bomb
 set binary
 set ttyfast
@@ -646,4 +646,7 @@ inoremap <C-z> <C-o>u
 
 " toggle paste mode
 set pastetoggle=<F2>
+
+" use very magic in default
+:nmap g/ /\v
 
