@@ -127,8 +127,8 @@ case ${OSTYPE} in
     ;;
 esac
 
-alias la='ls -a'
-alias ll='ls -al'
+alias la='ls -ah'
+alias ll='ls -alh'
 
 alias rm='rm -i'
 alias cp='cp -i'

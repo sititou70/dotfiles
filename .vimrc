@@ -31,6 +31,7 @@ call plug#begin(expand('~/.vim/plugged'))
 "*****************************************************************************
 "" Plug install packages
 "*****************************************************************************
+Plug 'vim-scripts/AutoComplPop'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
@@ -575,12 +576,6 @@ let NERDTreeShowHidden = 1
 nnoremap < <C-w><
 nnoremap > <C-w>>
 
-" auto complete
-set completeopt=menuone
-for k in split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_",'\zs')
-  exec "imap <expr> " . k . " pumvisible() ? '" . k . "' : '" . k . "\<C-X>\<C-P>\<C-N>'"
-endfor
-
 " show invisible
 set list
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
@@ -588,7 +583,7 @@ set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 " nowrap
 set nowrap
 
-" delete hilight when double press <ESC> key
+" delete hilight
 nnoremap <ESC><ESC> :nohl<CR>
 
 " don't make backupfile
@@ -633,12 +628,11 @@ vnoremap <C-x> <Left>d
 vnoremap <BS> <Left>d
 inoremap <C-v> <C-o>p
 
-" skip word when press ctrl+arrow
+" skip word
 nnoremap <C-Right> w
 nnoremap <C-Left> b
 
-" undo when press ctrl+z
-nnoremap <C-z> u
+" undo
 inoremap <C-z> <C-o>u
 
 " ignore case
@@ -649,4 +643,10 @@ set pastetoggle=<F2>
 
 " use very magic in default
 :nmap g/ /\v
+
+" set directory search snippet
+nnoremap <C-f> :vimgrep //j **/*.* \| cw<left><left><left><left><left><left><left><left><left><left><left><left><left><left>
+
+" open multiple file
+nnoremap <C-o> :args **/*.
 
