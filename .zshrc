@@ -175,13 +175,11 @@ if [ -e "$HOME/n" ]; then
 fi
 
 # docker toolbox on windows
-DOCKER_MACHINE_NAME='default'
-for user in $(find /mnt/c/Users -maxdepth 1 -type d); do
-  if [ -e "$user/.docker/machine/machines/$DOCKER_MACHINE_NAME" ]; then
-    export DOCKER_TLS_VERIFY=1
-    export DOCKER_HOST='tcp://192.168.99.100:2376'
-    export DOCKER_CERT_PATH="$user/.docker/machine/machines/$DOCKER_MACHINE_NAME"
-    export DOCKER_MACHINE_NAME="$DOCKER_MACHINE_NAME"
-  fi
-done
-
+if type docker-machine.exe 2>/dev/null; then
+  DOCKER_ENV=$(docker-machine.exe env |
+                grep SET |
+                sed -e 's/SET/export/g' |
+                sed -e 's/\\/\//g' |
+                sed -e 's/C:/\/mnt\/c/g')
+  eval $DOCKER_ENV
+fi
