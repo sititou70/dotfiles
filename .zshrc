@@ -183,3 +183,9 @@ if type docker-machine.exe 2>/dev/null; then
                 sed -e 's/C:/\/mnt\/c/g')
   eval $DOCKER_ENV
 fi
+
+# cargo
+if [ -e "$HOME/.cargo/bin" ]; then
+  PATH+=":$HOME/.cargo/bin/"
+fi
+
