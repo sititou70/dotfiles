@@ -1,6 +1,6 @@
-ln -sf ~/dotfiles/.bashrc ~/.bashrc
-ln -sf ~/dotfiles/.zshrc ~/.zshrc
-ln -sf ~/dotfiles/.vimrc ~/.vimrc
-ln -sf ~/dotfiles/.gitconfig ~/.gitconfig
-ln -sf ~/dotfiles/.dircolors ~/.dircolors
+ln -sf $(pwd)/.bashrc ~/.bashrc
+ln -sf $(pwd)/.zshrc ~/.zshrc
+ln -sf $(pwd)/.vimrc ~/.vimrc
+ln -sf $(pwd)/.gitconfig ~/.gitconfig
+ln -sf $(pwd)/.dircolors ~/.dircolors
 

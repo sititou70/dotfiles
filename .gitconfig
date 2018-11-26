@@ -1,9 +1,10 @@
 [user]
-	email = b1015208@fun.ac.jp
-	name = Takuya Shizukuishi
+  email = b1015208@fun.ac.jp
+  name = Takuya Shizukuishi
 [core]
   editor = vim -c \"set fenc=utf-8\"
   pager = less -cm
   quotepath = false
 [push]
-	default = simple
+  default = simple
+

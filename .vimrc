@@ -507,6 +507,7 @@ let g:jedi#smart_auto_mappings = 0
 
 " syntastic
 let g:syntastic_python_checkers=['python', 'flake8']
+let g:syntastic_python_python_exec = '/usr/bin/python3'
 
 " vim-airline
 let g:airline#extensions#virtualenv#enabled = 1
@@ -636,7 +637,7 @@ nnoremap <C-Left> b
 inoremap <C-z> <C-o>u
 
 " ignore case
-:set ignorecase
+set ignorecase
 
 " toggle paste mode
 set pastetoggle=<F2>

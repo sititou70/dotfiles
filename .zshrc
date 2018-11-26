@@ -136,6 +136,8 @@ alias mv='mv -i'
 
 alias mkdir='mkdir -p'
 
+alias grep='grep --color'
+
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
 
@@ -169,23 +171,5 @@ bindkey '^r' select-history
 ########################################
 # software settings
 # n
-if [ -e "$HOME/n" ]; then
-  export N_PREFIX="$HOME/n"
-  [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
-fi
-
-# docker toolbox on windows
-if type docker-machine.exe 2>/dev/null; then
-  DOCKER_ENV=$(docker-machine.exe env |
-                grep SET |
-                sed -e 's/SET/export/g' |
-                sed -e 's/\\/\//g' |
-                sed -e 's/C:/\/mnt\/c/g')
-  eval $DOCKER_ENV
-fi
-
-# cargo
-if [ -e "$HOME/.cargo/bin" ]; then
-  PATH+=":$HOME/.cargo/bin/"
-fi
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 
