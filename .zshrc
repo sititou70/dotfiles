@@ -15,8 +15,37 @@ HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 
-# 1行表示
-PROMPT=$'%{\e[0;37m%}%~%{\e[0;36m%}% $ %{\e[0m%}'
+# powerline
+# pip
+if ! type pip > /dev/null; then
+  echo installing pip
+  curl https://bootstrap.pypa.io/get-pip.py | sudo python
+fi
+
+# powerline shell
+if ! type powerline-shell > /dev/null; then
+  echo installing powerline shell
+  sudo pip install powerline-shell
+fi
+
+# powerline functions
+function powerline_precmd() {
+    PS1="$(powerline-shell --shell zsh $?)"
+}
+
+function install_powerline_precmd() {
+  for s in "${precmd_functions[@]}"; do
+    if [ "$s" = "powerline_precmd" ]; then
+      return
+    fi
+  done
+  precmd_functions+=(powerline_precmd)
+}
+
+if [ "$TERM" != "linux" ]; then
+    install_powerline_precmd
+  fi
+
 
 # 単語の区切り文字を指定する
 autoload -Uz select-word-style
@@ -89,37 +118,6 @@ bindkey "^[[B" history-beginning-search-forward-end
 
 
 ########################################
-# vcs_info
-autoload -Uz vcs_info
-autoload -Uz add-zsh-hook
-
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' formats $'%F%{\e[0;36m%}% [%b]%{\e[0m%}%f'
-zstyle ':vcs_info:*' actionformats '%F{red}[%b|%a]%f'
-
-function _save_command_line() {
-  _pre_command_line=$1
-}
-add-zsh-hook preexec _save_command_line
-
-function _update_vcs_info_msg() {
-  case "${_pre_command_line}" in
-    cd*|git\ checkout*|git\ mrege*|git\ pull*|git\ branch\ -m*)
-      if test -d .git
-      then
-        LANG=en_US.UTF-8 vcs_info
-        RPROMPT="${vcs_info_msg_0_}"
-      else
-        RPROMPT=""
-      fi
-    ;;
-  esac
-  _pre_command_line=""
-}
-add-zsh-hook precmd _update_vcs_info_msg
-
-
-########################################
 # エイリアス
 case ${OSTYPE} in
   linux*)
@@ -148,24 +146,6 @@ eval $(dircolors ~/.dircolors)
 if [ -n "$LS_COLORS" ]; then
   zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 fi
-
-
-########################################
-# fzf history search
-if [ ! -e ~/.fzf ];
-then
-  echo "no fzf at ~/.fzf, installing..."
-  git clone https://github.com/junegunn/fzf.git ~/.fzf
-  ~/.fzf/install
-fi
-
-function select-history() {
-  BUFFER=$(history -n -r 1 | ~/.fzf/bin/fzf --no-sort --height 40% +m --query "$LBUFFER" --prompt=" > ")
-  CURSOR=$#BUFFER
-}
-
-zle -N select-history
-bindkey '^r' select-history
 
 
 ########################################
