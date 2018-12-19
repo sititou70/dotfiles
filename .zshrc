@@ -15,43 +15,12 @@ HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 
-# powerline
-# pip
-if ! type pip > /dev/null; then
-  echo installing pip
-  curl https://bootstrap.pypa.io/get-pip.py | sudo python
-fi
-
-# powerline shell
-if ! type powerline-shell > /dev/null; then
-  echo installing powerline shell
-  sudo pip install powerline-shell
-fi
-
-# powerline functions
-function powerline_precmd() {
-    PS1="$(powerline-shell --shell zsh $?)"
-}
-
-function install_powerline_precmd() {
-  for s in "${precmd_functions[@]}"; do
-    if [ "$s" = "powerline_precmd" ]; then
-      return
-    fi
-  done
-  precmd_functions+=(powerline_precmd)
-}
-
-if [ "$TERM" != "linux" ]; then
-    install_powerline_precmd
-  fi
-
-
 # 単語の区切り文字を指定する
 autoload -Uz select-word-style
 select-word-style default
 zstyle ':zle:*' word-chars " /=;@:{},|"
 zstyle ':zle:*' word-style unspecified
+
 
 ########################################
 # 補完
@@ -122,7 +91,6 @@ case ${OSTYPE} in
     ;;
 esac
 
-alias la='ls -ah'
 alias ll='ls -alh'
 
 alias rm='rm -i'
@@ -142,6 +110,42 @@ alias sudo='sudo '
 eval $(dircolors ~/.dircolors)
 if [ -n "$LS_COLORS" ]; then
   zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+fi
+
+
+########################################
+# powerline-go
+
+POWERLINE_GO_LINUX_URL="https://github.com/justjanne/powerline-go/releases/download/v1.11.0/powerline-go-linux-amd64"
+POWERLINE_GO_DIR="$HOME/.powerline-go"
+POWERLINE_GO_BIN="powerline-go"
+if [ ! -e $POWERLINE_GO_DIR ]; then
+  echo installing powerline go
+  mkdir $POWERLINE_GO_DIR
+  wget -O $POWERLINE_GO_DIR/$POWERLINE_GO_BIN $POWERLINE_GO_LINUX_URL
+  chmod 700 $POWERLINE_GO_DIR/$POWERLINE_GO_BIN
+fi
+
+function powerline_precmd() {
+    PS1="$(
+      $POWERLINE_GO_DIR/$POWERLINE_GO_BIN \
+        -shell zsh \
+        -modules 'ssh,cwd,git' \
+        -cwd-mode plain
+    )"
+}
+
+function install_powerline_precmd() {
+  for s in "${precmd_functions[@]}"; do
+    if [ "$s" = "powerline_precmd" ]; then
+      return
+    fi
+  done
+  precmd_functions+=(powerline_precmd)
+}
+
+if [ "$TERM" != "linux" ]; then
+  install_powerline_precmd
 fi
 
 
