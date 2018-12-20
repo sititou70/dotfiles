@@ -566,6 +566,9 @@ else
   let g:airline_symbols.linenr = ''
 endif
 
+"double ambiguous width
+set ambiwidth=double
+
 " jump cursor natural
 set whichwrap=b,s,<,>,[,]
 
@@ -644,10 +647,4 @@ set pastetoggle=<F2>
 
 " use very magic in default
 :nmap g/ /\v
-
-" set directory search snippet
-nnoremap <C-f> :vimgrep //j **/*.* \| cw<left><left><left><left><left><left><left><left><left><left><left><left><left><left>
-
-" open multiple file
-nnoremap <C-o> :args **/*.
 
