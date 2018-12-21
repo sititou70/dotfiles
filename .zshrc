@@ -117,12 +117,22 @@ fi
 # powerline-go
 
 POWERLINE_GO_LINUX_URL="https://github.com/justjanne/powerline-go/releases/download/v1.11.0/powerline-go-linux-amd64"
+POWERLINE_GO_MAC_URL="https://github.com/justjanne/powerline-go/releases/download/v1.11.0/powerline-go-darwin-amd64"
 POWERLINE_GO_DIR="$HOME/.powerline-go"
 POWERLINE_GO_BIN="powerline-go"
 if [ ! -e $POWERLINE_GO_DIR ]; then
   echo installing powerline go
   mkdir $POWERLINE_GO_DIR
-  wget -O $POWERLINE_GO_DIR/$POWERLINE_GO_BIN $POWERLINE_GO_LINUX_URL
+
+  case ${OSTYPE} in
+    linux*)
+      wget -O $POWERLINE_GO_DIR/$POWERLINE_GO_BIN $POWERLINE_GO_LINUX_URL
+      ;;
+    darwin*)
+      wget -O $POWERLINE_GO_DIR/$POWERLINE_GO_BIN $POWERLINE_GO_MAC_URL
+      ;;
+  esac
+
   chmod 700 $POWERLINE_GO_DIR/$POWERLINE_GO_BIN
 fi
 
@@ -153,4 +163,3 @@ fi
 # software settings
 # n
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
-
