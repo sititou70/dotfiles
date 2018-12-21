@@ -140,7 +140,7 @@ function powerline_precmd() {
     PS1="$(
       $POWERLINE_GO_DIR/$POWERLINE_GO_BIN \
         -shell zsh \
-        -modules 'ssh,cwd,git' \
+        -modules 'ssh,git,cwd' \
         -cwd-mode plain
     )"
 }
@@ -163,3 +163,4 @@ fi
 # software settings
 # n
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+
