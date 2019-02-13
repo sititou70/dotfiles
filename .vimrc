@@ -569,6 +569,9 @@ endif
 "double ambiguous width
 set ambiwidth=double
 
+" use clipboard
+set clipboard=unnamedplus
+
 " jump cursor natural
 set whichwrap=b,s,<,>,[,]
 
