@@ -566,6 +566,10 @@ else
   let g:airline_symbols.linenr = ''
 endif
 
+"*****************************************************************************
+"" ather settings
+"*****************************************************************************
+
 "double ambiguous width
 set ambiwidth=double
 
@@ -578,10 +582,6 @@ set whichwrap=b,s,<,>,[,]
 " when open vim, also open nerdtree
 let g:nerdtree_tabs_open_on_console_startup = 1
 let NERDTreeShowHidden = 1
-
-" change nerd tree pain size more easy
-nnoremap < <C-w><
-nnoremap > <C-w>>
 
 " show invisible
 set list
@@ -600,8 +600,17 @@ set nobackup
 set cursorline
 highlight CursorLine ctermbg=233
 
-" ajust MatchParen color
+" adjust MatchParen color
 hi MatchParen cterm=underline ctermfg=208 ctermbg=NONE
+
+" ignore case
+set ignorecase
+
+" toggle paste mode
+set pastetoggle=<F2>
+
+" use very magic in default
+:nmap g/ /\v
 
 " display line cursor move
 nnoremap <C-Up> gk
@@ -635,19 +644,17 @@ vnoremap <C-x> <Left>d
 vnoremap <BS> <Left>d
 inoremap <C-v> <C-o>p
 
+" pain util
+nnoremap s, <C-w><
+nnoremap s. <C-w>>
+nnoremap s; <C-w>+
+nnoremap s- <C-w>-
+nnoremap ss :split<CR>
+nnoremap sv :vsplit<CR>
+
 " skip word
 nnoremap <C-Right> w
 nnoremap <C-Left> b
 
-" undo
-inoremap <C-z> <C-o>u
 
-" ignore case
-set ignorecase
-
-" toggle paste mode
-set pastetoggle=<F2>
-
-" use very magic in default
-:nmap g/ /\v
 
