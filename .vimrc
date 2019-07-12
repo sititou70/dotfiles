@@ -656,5 +656,3 @@ nnoremap sv :vsplit<CR>
 nnoremap <C-Right> w
 nnoremap <C-Left> b
 
-
-
