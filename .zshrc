@@ -114,6 +114,24 @@ fi
 
 
 ########################################
+# fzf history search
+if [ ! -e ~/.fzf ];
+then
+  echo "no fzf at ~/.fzf, installing..."
+  git clone https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install
+fi
+
+function select-history() {
+  BUFFER=$(history -n -r 1 | ~/.fzf/bin/fzf --no-sort --height 40% +m --query "$LBUFFER" --prompt=" > ")
+  CURSOR=$#BUFFER
+}
+
+zle -N select-history
+bindkey '^r' select-history
+
+
+########################################
 # powerline-go
 
 POWERLINE_GO_LINUX_URL="https://github.com/justjanne/powerline-go/releases/download/v1.11.0/powerline-go-linux-amd64"
