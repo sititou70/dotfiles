@@ -645,6 +645,7 @@ vnoremap <BS> <Left>d
 inoremap <C-v> <C-o>p
 
 " pain util
+nnoremap sw <C-w>w
 nnoremap s, <C-w><
 nnoremap s. <C-w>>
 nnoremap s; <C-w>+
