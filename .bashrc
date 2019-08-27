@@ -2,6 +2,8 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+export DOTFILES_PATH="$HOME/dotfiles"
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
