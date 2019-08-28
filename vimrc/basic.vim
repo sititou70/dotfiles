@@ -63,22 +63,11 @@ set whichwrap=b,s,<,>,[,]
 let g:nerdtree_tabs_open_on_console_startup = 1
 let NERDTreeShowHidden = 1
 
-" show invisible
-set list
-set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
-
 " nowrap
 set nowrap
 
 " don't make backupfile
 set nobackup
-
-" hilight current column
-set cursorline
-highlight CursorLine ctermbg=233
-
-" adjust MatchParen color
-hi MatchParen cterm=underline ctermfg=208 ctermbg=NONE
 
 " ignore case
 set ignorecase

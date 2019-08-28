@@ -81,3 +81,15 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline_skip_empty_sections = 1
 
+" show invisible
+set list
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+
+" hilight current column
+set cursorline
+highlight CursorLine ctermbg=233
+
+" adjust MatchParen color
+hi MatchParen cterm=underline ctermfg=208 ctermbg=NONE
+
+
