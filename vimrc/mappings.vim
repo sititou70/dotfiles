@@ -168,10 +168,10 @@ inoremap <C-v> <C-o>p
 
 " pain util
 nnoremap sw <C-w>w
-nnoremap s, <C-w><
-nnoremap s. <C-w>>
-nnoremap s; <C-w>+
-nnoremap s- <C-w>-
+nnoremap s, <C-w><<C-w><<C-w><<C-w><<C-w><
+nnoremap s. <C-w>><C-w>><C-w>><C-w>><C-w>>
+nnoremap s; <C-w>+<C-w>+<C-w>+<C-w>+<C-w>+
+nnoremap s- <C-w>-<C-w>-<C-w>-<C-w>-<C-w>-
 nnoremap ss :split<CR>
 nnoremap sv :vsplit<CR>
 
