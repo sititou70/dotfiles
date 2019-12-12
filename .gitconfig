@@ -7,4 +7,6 @@
   quotepath = false
 [push]
   default = simple
+[commit]
+  template = ~/dotfiles/commit_template
 
