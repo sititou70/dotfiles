@@ -85,14 +85,44 @@ bindkey "^[[B" history-beginning-search-forward-end
 
 
 ########################################
-# エイリアス
-case ${OSTYPE} in
-  linux*)
-    alias ls='ls --color=auto'
-    ;;
-esac
+# exa
 
 alias ll='ls -alh'
+
+EXA_DIR="$HOME/.exa"
+EXA_LINUX_URL="https://github.com/ogham/exa/releases/download/v0.9.0/exa-linux-x86_64-0.9.0.zip"
+EXA_LINUX_BIN="exa-linux-x86_64"
+EXA_MAC_URL="https://github.com/ogham/exa/releases/download/v0.9.0/exa-macos-x86_64-0.9.0.zip"
+EXA_MAC_BIN="exa-macos-x86_64"
+if [ ! -e $EXA_DIR -a $(uname -m) = "x86_64" ]; then
+  echo installing exa...
+  mkdir $EXA_DIR
+  cd $EXA_DIR
+
+  case ${OSTYPE} in
+    linux*)
+      wget $EXA_LINUX_URL
+      unzip $(basename $EXA_LINUX_URL)
+      rm -rf $(basename $EXA_LINUX_URL)
+      ;;
+    darwin*)
+      wget $EXA_MAC_URL
+      unzip $(basename $EXA_MAC_URL)
+      rm -rf $(basename $EXA_MAC_URL)
+      ;;
+  esac
+
+  cd ..
+fi
+
+if [ -e $EXA_DIR ]; then
+  alias ls="$EXA_DIR/$EXA_LINUX_BIN --icons --classify --sort=type"
+  alias ll="ls -alhg --git --time-style long-iso --color-scale"
+fi
+
+
+########################################
+# エイリアス
 
 alias rm='rm -i'
 alias cp='cp -i'
@@ -139,7 +169,7 @@ POWERLINE_GO_LINUX_URL="https://github.com/justjanne/powerline-go/releases/downl
 POWERLINE_GO_MAC_URL="https://github.com/justjanne/powerline-go/releases/download/v1.11.0/powerline-go-darwin-amd64"
 POWERLINE_GO_DIR="$HOME/.powerline-go"
 POWERLINE_GO_BIN="powerline-go"
-if [ ! -e $POWERLINE_GO_DIR ]; then
+if [ ! -e $POWERLINE_GO_DIR -a $(uname -m) = "x86_64" ]; then
   echo installing powerline go
   mkdir $POWERLINE_GO_DIR
 
