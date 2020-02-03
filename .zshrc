@@ -132,6 +132,8 @@ alias mkdir='mkdir -p'
 
 alias grep='grep --color'
 
+alias tree='tree -sh'
+
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
 
