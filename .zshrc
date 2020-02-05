@@ -116,7 +116,15 @@ if [ ! -e $EXA_DIR -a $(uname -m) = "x86_64" ]; then
 fi
 
 if [ -e $EXA_DIR ]; then
-  alias ls="$EXA_DIR/$EXA_LINUX_BIN --icons --classify --sort=type"
+  case ${OSTYPE} in
+    linux*)
+      alias ls="$EXA_DIR/$EXA_LINUX_BIN --icons --classify --sort=type"
+      ;;
+    darwin*)
+      alias ls="$EXA_DIR/$EXA_MAC_BIN --icons --classify --sort=type"
+      ;;
+  esac
+
   alias ll="ls -alhg --git --time-style long-iso --color-scale"
 fi
 
