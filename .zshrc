@@ -72,7 +72,9 @@ setopt hist_ignore_all_dups
 # key binndings
 # skipping word when press Ctrl+ArrowKey
 bindkey "^[[1;5C" forward-word
+bindkey "^[^[[C" forward-word
 bindkey "^[[1;5D" backward-word
+bindkey "^[^[[D" backward-word
 
 # substring search
 autoload -U history-search-end
