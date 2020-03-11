@@ -76,6 +76,9 @@ bindkey "^[^[[C" forward-word
 bindkey "^[[1;5D" backward-word
 bindkey "^[^[[D" backward-word
 
+# delete previous word
+bindkey '^H' backward-kill-word
+
 # substring search
 autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
