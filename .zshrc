@@ -237,3 +237,11 @@ if [ -e $GOENV_ROOT ]; then
   export PATH="$PATH:$GOPATH/bin"
 fi
 
+
+########################################
+# launch tmux
+type tmux > /dev/null
+if [ "$TMUX" = "" -a "$?" = "0" ]; then
+  tmux a || tmux
+  exit
+fi
