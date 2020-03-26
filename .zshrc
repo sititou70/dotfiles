@@ -89,7 +89,6 @@ bindkey "^[[B" history-beginning-search-forward-end
 
 ########################################
 # exa
-
 alias ll='ls -alh'
 
 EXA_DIR="$HOME/.exa"
@@ -150,11 +149,13 @@ alias sudo='sudo '
 
 ########################################
 # dircolors setting
-eval $(dircolors ~/.dircolors)
-if [ -n "$LS_COLORS" ]; then
-  zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+type dircolors > /dev/null
+if [ "$?" = "0" ]; then
+  eval $(dircolors ~/.dircolors)
+  if [ -n "$LS_COLORS" ]; then
+    zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+  fi
 fi
-
 
 ########################################
 # fzf history search
