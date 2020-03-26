@@ -71,13 +71,11 @@ setopt hist_ignore_all_dups
 ########################################
 # key binndings
 # skipping word when press Ctrl+ArrowKey
-bindkey "^[[1;5C" forward-word
 bindkey "^[^[[C" forward-word
-bindkey "^[[1;5D" backward-word
 bindkey "^[^[[D" backward-word
-
-# delete previous word
-bindkey '^H' backward-kill-word
+## for MAC
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
 
 # substring search
 autoload -U history-search-end
@@ -135,8 +133,7 @@ fi
 
 
 ########################################
-# エイリアス
-
+# alias
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
@@ -147,7 +144,7 @@ alias grep='grep --color'
 
 alias tree='tree -sh'
 
-# sudo の後のコマンドでエイリアスを有効にする
+# enable alias after sudo
 alias sudo='sudo '
 
 
@@ -179,7 +176,6 @@ bindkey '^r' select-history
 
 ########################################
 # powerline-go
-
 POWERLINE_GO_LINUX_URL="https://github.com/justjanne/powerline-go/releases/download/v1.11.0/powerline-go-linux-amd64"
 POWERLINE_GO_MAC_URL="https://github.com/justjanne/powerline-go/releases/download/v1.11.0/powerline-go-darwin-amd64"
 POWERLINE_GO_DIR="$HOME/.powerline-go"
