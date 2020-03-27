@@ -14,6 +14,6 @@ for i in $FILES; do
     rm -rf $dest_file
     ln -sf $(pwd)/$source_file $dest_file
   else
-    printf "${RED}failed${RESET} $source_file: $dest_dir not found"
+    printf "${RED}failed${RESET} $source_file: $dest_dir not found\n"
   fi
 done
