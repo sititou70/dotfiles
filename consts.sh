@@ -7,7 +7,8 @@ src/.vimrc->$HOME/.vimrc
 src/.tmux.conf->$HOME/.tmux.conf
 src/.gitconfig->$HOME/.gitconfig
 src/.dircolors->$HOME/.dircolors
-src/terminator.config->$HOME/.config/terminator/config"
+src/terminator.config->$HOME/.config/terminator/config
+src/vscode.setting.json->$HOME/.config/Code/User/settings.json"
 
 # color
 RED="\e[31m"
