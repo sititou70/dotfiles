@@ -1,13 +1,12 @@
 #!/bin/bash
+set -eu
 
-rm -rf ~/.bashrc
-rm -rf ~/.zshrc
-rm -rf ~/.vimrc
-rm -rf ~/.tmux.conf
-rm -rf ~/.gitconfig
-rm -rf ~/.dircolors
+. consts.sh
 
-if [ -e ~/.config/terminator ]; then
-  rm -rf ~/.config/terminator/config
-fi
-
+# main
+for i in $FILES; do
+  dest_file=$(echo "$i" | sed -e "s/->/ /" | cut -d " " -f 2)
+  
+  echo uninstall: $dest_file
+  rm -rf $dest_file
+done

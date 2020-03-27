@@ -8,5 +8,4 @@
 [push]
   default = simple
 [commit]
-  template = ~/dotfiles/commit_template
-
+  template = ~/dotfiles/src/commit_template
