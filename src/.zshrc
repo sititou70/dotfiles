@@ -44,11 +44,13 @@ setopt interactive_comments
 ########################################
 # key binndings
 # skipping word when press Ctrl+ArrowKey
-bindkey "^[^[[C" forward-word
-bindkey "^[^[[D" backward-word
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
 ## for MAC
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
+
+bindkey "^H" backward-kill-word
 
 # substring search
 autoload -U history-search-end
