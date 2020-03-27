@@ -3,69 +3,42 @@
 # http://mollifier.mit-license.org/
 
 ########################################
-# 環境変数
+# basics
 export LANG=ja_JP.UTF-8
 export DOTFILES_PATH="$HOME/dotfiles"
 
-# 色を使用出来るようにする
+# use color
 autoload -Uz colors
 colors
 
-# ヒストリの設定
+# history
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
+setopt share_history
+setopt hist_ignore_all_dups
 
-# 単語の区切り文字を指定する
+# word separator
 autoload -Uz select-word-style
 select-word-style default
 zstyle ':zle:*' word-chars " /=;@:{},|"
 zstyle ':zle:*' word-style unspecified
 
-
-########################################
-# 補完
-# 補完機能を有効にする
+# completion
 autoload -U compinit
 compinit -C
 zstyle ':completion:*:default' menu select=2
-
-# 補完で小文字でも大文字にマッチさせる
+## ignore cases
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+## enable after sudo
+zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
 
-# sudo の後ろでコマンド名を補完する
-zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
-                   /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
-
-
-########################################
-# オプション
-# 日本語ファイル名を表示可能にする
+# etc
 setopt print_eight_bit
-
-# beep を無効にする
 setopt no_beep
-
-# フローコントロールを無効にする
 setopt no_flow_control
-
-# Ctrl+Dでzshを終了しない
 setopt ignore_eof
-
-# '#' 以降をコメントとして扱う
 setopt interactive_comments
-
-# cd したら自動的にpushdする
-setopt auto_pushd
-
-# 重複したディレクトリを追加しない
-setopt pushd_ignore_dups
-
-# 同時に起動したzshの間でヒストリを共有する
-setopt share_history
-
-# 同じコマンドをヒストリに残さない
-setopt hist_ignore_all_dups
 
 
 ########################################
