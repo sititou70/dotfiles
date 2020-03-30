@@ -8,7 +8,8 @@ src/.tmux.conf->$HOME/.tmux.conf
 src/.gitconfig->$HOME/.gitconfig
 src/.dircolors->$HOME/.dircolors
 src/terminator.config->$HOME/.config/terminator/config
-src/vscode.settings.json->$HOME/.config/Code/User/settings.json"
+src/vscode.settings.json->$HOME/.config/Code/User/settings.json
+src/vscode.settings.json->$HOME/Library/Application Support/Code/User/settings.json"
 
 # color
 RED="\e[31m"
