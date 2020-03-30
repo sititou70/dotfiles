@@ -1,7 +1,3 @@
-# 少し凝った zshrc a little edited by sititou70
-# License : MIT
-# http://mollifier.mit-license.org/
-
 ########################################
 # basics
 export LANG=ja_JP.UTF-8
@@ -63,6 +59,43 @@ bindkey "^[[B" history-beginning-search-forward-end
 
 
 ########################################
+# alias
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+alias mkdir='mkdir -p'
+
+alias grep='grep --color'
+
+alias tree='tree -sh'
+
+# enable alias after sudo
+alias sudo='sudo '
+
+
+########################################
+# coreutils for Mac (brew install coreutils)
+type brew > /dev/null
+if [ "$?" = "0" ]; then
+  COREUTILS_PATH="$(brew --prefix coreutils)/libexec/gnubin"
+  [ -e "$COREUTILS_PATH" ] && PATH="$COREUTILS_PATH:$PATH"
+fi
+
+
+########################################
+# dircolors setting
+type dircolors > /dev/null
+if [ "$?" = "0" ]; then
+  eval $(dircolors ~/.dircolors)
+
+  if [ -n "$LS_COLORS" ]; then
+    zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+  fi
+fi
+
+
+########################################
 # exa
 alias ll='ls -alh'
 
@@ -105,32 +138,6 @@ if [ -e $EXA_DIR ]; then
   alias ll="ls -alhg --git --time-style long-iso --color-scale"
 fi
 
-
-########################################
-# alias
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
-
-alias mkdir='mkdir -p'
-
-alias grep='grep --color'
-
-alias tree='tree -sh'
-
-# enable alias after sudo
-alias sudo='sudo '
-
-
-########################################
-# dircolors setting
-type dircolors > /dev/null
-if [ "$?" = "0" ]; then
-  eval $(dircolors ~/.dircolors)
-  if [ -n "$LS_COLORS" ]; then
-    zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-  fi
-fi
 
 ########################################
 # fzf history search
@@ -197,10 +204,10 @@ fi
 
 ########################################
 # software settings
-# n
-export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+# n (curl -L https://git.io/n-install | bash)
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 
-# goenv(git clone https://github.com/syndbg/goenv.git ~/.goenv)
+# goenv (git clone https://github.com/syndbg/goenv.git ~/.goenv)
 export GOENV_ROOT="$HOME/.goenv"
 if [ -e $GOENV_ROOT ]; then
   export PATH="$GOENV_ROOT/bin:$PATH"
