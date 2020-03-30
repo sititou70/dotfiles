@@ -1,0 +1,10 @@
+# tilestamp
+da=00;38;5;238
+
+# user/group
+## my file
+uu=00;38;5;245
+gu=00;38;5;245
+## other's file
+un=00;38;5;238
+gn=00;38;5;238

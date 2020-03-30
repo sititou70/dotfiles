@@ -97,8 +97,7 @@ fi
 
 ########################################
 # exa
-alias ll='ls -alh'
-
+# install
 EXA_DIR="$HOME/.exa"
 EXA_LINUX_URL="https://github.com/ogham/exa/releases/download/v0.9.0/exa-linux-x86_64-0.9.0.zip"
 EXA_LINUX_BIN="exa-linux-x86_64"
@@ -125,6 +124,8 @@ if [ ! -e $EXA_DIR -a $(uname -m) = "x86_64" ]; then
   cd ..
 fi
 
+# ls alias
+alias ll='ls -alh'
 if [ -e $EXA_DIR ]; then
   case ${OSTYPE} in
     linux*)
@@ -136,6 +137,18 @@ if [ -e $EXA_DIR ]; then
   esac
 
   alias ll="ls -alhg --git --time-style long-iso --color-scale"
+fi
+
+# exacolors
+EXA_COLORS_FILE="$HOME/.exacolors"
+if [ -e $EXA_COLORS_FILE ]; then
+  export EXA_COLORS=$(\
+    cat $EXA_COLORS_FILE \
+      | grep -v -e "^#" \
+      | grep -v -e "^$" \
+      | xargs echo \
+      | sed -e "s/ /:/g"\
+  )
 fi
 
 
