@@ -162,7 +162,16 @@ then
 fi
 
 function select-history() {
-  BUFFER=$(history -n -r 1 | ~/.fzf/bin/fzf --no-sort --height 40% +m --query "$LBUFFER" --prompt=" > ")
+  BUFFER=$( \
+    history -n -r 1 \
+    | ~/.fzf/bin/fzf \
+        +m \
+        -e \
+        --height 40% \
+        --prompt=" > "\
+        --query "$LBUFFER"\
+        --no-sort \
+  )
   CURSOR=$#BUFFER
 }
 
