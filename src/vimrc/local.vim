@@ -1,7 +1,10 @@
 "*****************************************************************************
 "" Basics
 "*****************************************************************************"
-"double ambiguous width
+" disable swapfile
+set noswapfile
+
+" double ambiguous width
 set ambiwidth=double
 
 " use clipboard
