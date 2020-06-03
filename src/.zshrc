@@ -181,8 +181,8 @@ bindkey '^r' select-history
 
 ########################################
 # powerline-go
-POWERLINE_GO_LINUX_URL="https://github.com/justjanne/powerline-go/releases/download/v1.11.0/powerline-go-linux-amd64"
-POWERLINE_GO_MAC_URL="https://github.com/justjanne/powerline-go/releases/download/v1.11.0/powerline-go-darwin-amd64"
+POWERLINE_GO_LINUX_URL="https://github.com/justjanne/powerline-go/releases/download/v1.17.0/powerline-go-linux-amd64"
+POWERLINE_GO_MAC_URL="https://github.com/justjanne/powerline-go/releases/download/v1.17.0/powerline-go-darwin-amd64"
 POWERLINE_GO_DIR="$HOME/.powerline-go"
 POWERLINE_GO_BIN="powerline-go"
 if [ ! -e $POWERLINE_GO_DIR -a $(uname -m) = "x86_64" ]; then
@@ -206,7 +206,9 @@ function powerline_precmd() {
       $POWERLINE_GO_DIR/$POWERLINE_GO_BIN \
         -shell zsh \
         -modules 'ssh,git,cwd' \
-        -cwd-mode plain
+        -cwd-mode plain \
+        -east-asian-width \
+        -alternate-ssh-icon
     )"
 }
 
