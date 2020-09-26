@@ -9,4 +9,5 @@
         "editor.defaultFormatter": "redhat.vscode-yaml"
     },
     "editor.formatOnSave": true,
+    "editor.parameterHints.enabled": false,
 }
