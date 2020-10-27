@@ -6,7 +6,7 @@
     "window.zoomLevel": 0,
     "C_Cpp.updateChannel": "Insiders",
     "[yaml]": {
-        "editor.defaultFormatter": "redhat.vscode-yaml"
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "editor.formatOnSave": true,
     "editor.parameterHints.enabled": false,
@@ -16,6 +16,12 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
 }
