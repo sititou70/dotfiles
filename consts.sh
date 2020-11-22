@@ -10,7 +10,9 @@ src/.dircolors->$HOME/.dircolors
 src/.exacolors->$HOME/.exacolors
 src/terminator.config->$HOME/.config/terminator/config
 src/vscode.settings.json->$HOME/.config/Code/User/settings.json
-src/vscode.settings.json->$HOME/Library/Application Support/Code/User/settings.json"
+src/vscode.settings.json->$HOME/Library/Application Support/Code/User/settings.json
+src/sshcontrol->$HOME/.gnupg/sshcontrol
+src/gpg-agent.conf->$HOME/.gnupg/gpg-agent.conf"
 
 # color
 RED="\e[31m"

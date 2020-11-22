@@ -1,6 +1,7 @@
 [user]
   email = sititou70@gmail.com
   name = Takuya Shizukuishi
+	signingkey = 9C4B252D181620A8
 [core]
   editor = vim -c \"set fenc=utf-8\"
   pager = less -cm
@@ -9,3 +10,4 @@
   default = simple
 [commit]
   template = ~/dotfiles/src/commit_template
+	gpgsign = true

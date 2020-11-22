@@ -36,7 +36,6 @@ setopt no_flow_control
 setopt ignore_eof
 setopt interactive_comments
 
-
 ########################################
 # key binndings
 # skipping word when press Ctrl+ArrowKey
@@ -57,7 +56,6 @@ bindkey "^[OB" history-beginning-search-forward-end
 bindkey "^[[A" history-beginning-search-backward-end
 bindkey "^[[B" history-beginning-search-forward-end
 
-
 ########################################
 # alias
 alias rm='rm -i'
@@ -73,19 +71,17 @@ alias tree='tree -sh'
 # enable alias after sudo
 alias sudo='sudo '
 
-
 ########################################
 # coreutils for Mac (brew install coreutils)
-type brew > /dev/null
+type brew >/dev/null
 if [ "$?" = "0" ]; then
   COREUTILS_PATH="$(brew --prefix coreutils)/libexec/gnubin"
   [ -e "$COREUTILS_PATH" ] && PATH="$COREUTILS_PATH:$PATH"
 fi
 
-
 ########################################
 # dircolors setting
-type dircolors > /dev/null
+type dircolors >/dev/null
 if [ "$?" = "0" ]; then
   eval $(dircolors ~/.dircolors)
 
@@ -94,6 +90,14 @@ if [ "$?" = "0" ]; then
   fi
 fi
 
+########################################
+# gpg-agent
+type gpgconf >/dev/null
+if [ "$?" = "0" ]; then
+  export GPG_TTY=$(tty)
+  gpgconf --launch gpg-agent
+  export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+fi
 
 ########################################
 # exa
@@ -109,16 +113,16 @@ if [ ! -e $EXA_DIR -a $(uname -m) = "x86_64" ]; then
   cd $EXA_DIR
 
   case ${OSTYPE} in
-    linux*)
-      wget $EXA_LINUX_URL
-      unzip $(basename $EXA_LINUX_URL)
-      rm -rf $(basename $EXA_LINUX_URL)
-      ;;
-    darwin*)
-      wget $EXA_MAC_URL
-      unzip $(basename $EXA_MAC_URL)
-      rm -rf $(basename $EXA_MAC_URL)
-      ;;
+  linux*)
+    wget $EXA_LINUX_URL
+    unzip $(basename $EXA_LINUX_URL)
+    rm -rf $(basename $EXA_LINUX_URL)
+    ;;
+  darwin*)
+    wget $EXA_MAC_URL
+    unzip $(basename $EXA_MAC_URL)
+    rm -rf $(basename $EXA_MAC_URL)
+    ;;
   esac
 
   cd ..
@@ -128,12 +132,12 @@ fi
 alias ll='ls -alh'
 if [ -e $EXA_DIR ]; then
   case ${OSTYPE} in
-    linux*)
-      alias ls="$EXA_DIR/$EXA_LINUX_BIN --icons --classify --sort=type"
-      ;;
-    darwin*)
-      alias ls="$EXA_DIR/$EXA_MAC_BIN --icons --classify --sort=type"
-      ;;
+  linux*)
+    alias ls="$EXA_DIR/$EXA_LINUX_BIN --icons --classify --sort=type"
+    ;;
+  darwin*)
+    alias ls="$EXA_DIR/$EXA_MAC_BIN --icons --classify --sort=type"
+    ;;
   esac
 
   alias ll="ls -alhg --git --time-style long-iso --color-scale"
@@ -142,42 +146,39 @@ fi
 # exacolors
 EXA_COLORS_FILE="$HOME/.exacolors"
 if [ -e $EXA_COLORS_FILE ]; then
-  export EXA_COLORS=$(\
-    cat $EXA_COLORS_FILE \
-      | grep -v -e "^#" \
-      | grep -v -e "^$" \
-      | xargs echo \
-      | sed -e "s/ /:/g"\
+  export EXA_COLORS=$(
+    cat $EXA_COLORS_FILE |
+      grep -v -e "^#" |
+      grep -v -e "^$" |
+      xargs echo |
+      sed -e "s/ /:/g"
   )
 fi
 
-
 ########################################
 # fzf history search
-if [ ! -e ~/.fzf ];
-then
+if [ ! -e ~/.fzf ]; then
   echo "no fzf at ~/.fzf, installing..."
   git clone https://github.com/junegunn/fzf.git ~/.fzf
   ~/.fzf/install
 fi
 
 function select-history() {
-  BUFFER=$( \
-    history -n -r 1 \
-    | ~/.fzf/bin/fzf \
+  BUFFER=$(
+    history -n -r 1 |
+      ~/.fzf/bin/fzf \
         +m \
         -e \
         --height 40% \
-        --prompt=" > "\
-        --query "$LBUFFER"\
-        --no-sort \
+        --prompt=" > " \
+        --query "$LBUFFER" \
+        --no-sort
   )
   CURSOR=$#BUFFER
 }
 
 zle -N select-history
 bindkey '^r' select-history
-
 
 ########################################
 # powerline-go
@@ -190,26 +191,26 @@ if [ ! -e $POWERLINE_GO_DIR -a $(uname -m) = "x86_64" ]; then
   mkdir $POWERLINE_GO_DIR
 
   case ${OSTYPE} in
-    linux*)
-      wget -O $POWERLINE_GO_DIR/$POWERLINE_GO_BIN $POWERLINE_GO_LINUX_URL
-      ;;
-    darwin*)
-      wget -O $POWERLINE_GO_DIR/$POWERLINE_GO_BIN $POWERLINE_GO_MAC_URL
-      ;;
+  linux*)
+    wget -O $POWERLINE_GO_DIR/$POWERLINE_GO_BIN $POWERLINE_GO_LINUX_URL
+    ;;
+  darwin*)
+    wget -O $POWERLINE_GO_DIR/$POWERLINE_GO_BIN $POWERLINE_GO_MAC_URL
+    ;;
   esac
 
   chmod 700 $POWERLINE_GO_DIR/$POWERLINE_GO_BIN
 fi
 
 function powerline_precmd() {
-    PS1="$(
-      $POWERLINE_GO_DIR/$POWERLINE_GO_BIN \
-        -shell zsh \
-        -modules 'ssh,git,cwd' \
-        -cwd-mode plain \
-        -east-asian-width \
-        -alternate-ssh-icon
-    )"
+  PS1="$(
+    $POWERLINE_GO_DIR/$POWERLINE_GO_BIN \
+      -shell zsh \
+      -modules 'ssh,git,cwd' \
+      -cwd-mode plain \
+      -east-asian-width \
+      -alternate-ssh-icon
+  )"
 }
 
 function install_powerline_precmd() {
@@ -225,11 +226,11 @@ if [ "$TERM" != "linux" ]; then
   install_powerline_precmd
 fi
 
-
 ########################################
 # software settings
 # n (curl -L https://git.io/n-install | bash)
-export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
+export N_PREFIX="$HOME/n"
+[[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 
 # goenv (git clone https://github.com/syndbg/goenv.git ~/.goenv)
 export GOENV_ROOT="$HOME/.goenv"
@@ -240,10 +241,9 @@ if [ -e $GOENV_ROOT ]; then
   export PATH="$PATH:$GOPATH/bin"
 fi
 
-
 ########################################
 # launch tmux
-type tmux > /dev/null
+type tmux >/dev/null
 if [ "$TMUX" = "" -a "$?" = "0" ]; then
   tmux a || tmux
   exit
