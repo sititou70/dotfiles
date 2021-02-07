@@ -11,3 +11,5 @@
 [commit]
   template = ~/dotfiles/src/commit_template
 	gpgsign = true
+[pull]
+	ff = only
