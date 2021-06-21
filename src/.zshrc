@@ -264,6 +264,9 @@ if [ -e $GOENV_ROOT ]; then
   export PATH="$PATH:$GOPATH/bin"
 fi
 
+# joke
+source $DOTFILES_PATH/src/joke.zshrc
+
 ########################################
 # launch tmux
 type tmux >/dev/null
