@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-. consts.sh
+. ./consts.sh
 
 # main
 ORIG_IFS=$IFS
