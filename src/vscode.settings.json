@@ -27,7 +27,6 @@
   "extensions.ignoreRecommendations": true,
   "go.toolsManagement.autoUpdate": true,
   "explorer.confirmDelete": false,
-  "eslint.probe": [],
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
