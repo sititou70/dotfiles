@@ -68,6 +68,8 @@ alias grep='grep --color'
 
 alias tree='tree -sh'
 
+alias beep='echo -en "\a"'
+
 # enable alias after sudo
 alias sudo='sudo '
 
