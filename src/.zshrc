@@ -72,6 +72,12 @@ alias beep='echo -en "\a"'
 # enable alias after sudo
 alias sudo='sudo '
 
+# open
+type xdg-open >/dev/null
+if [ "$?" = "0" ]; then
+  alias open='xdg-open'
+fi
+
 ########################################
 # coreutils for Mac (brew install coreutils)
 type brew >/dev/null
