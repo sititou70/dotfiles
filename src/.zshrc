@@ -186,17 +186,20 @@ if [ -e $EXA_COLORS_FILE ]; then
 fi
 
 ########################################
-# fzf history search
-if [ ! -e ~/.fzf ]; then
+# install fzf
+if [ ! -e $HOME/.fzf ]; then
   echo "no fzf at ~/.fzf, installing..."
-  git clone https://github.com/junegunn/fzf.git ~/.fzf
-  ~/.fzf/install
+  git clone https://github.com/junegunn/fzf.git $HOME/.fzf
+  $HOME/.fzf/install
 fi
+PATH+=":$HOME/.fzf/bin"
 
+########################################
+# fzf history search
 function select-history() {
   BUFFER=$(
     history -n -r 1 |
-      ~/.fzf/bin/fzf \
+      fzf \
         +m \
         -e \
         --height 40% \
@@ -209,6 +212,24 @@ function select-history() {
 
 zle -N select-history
 bindkey '^r' select-history
+
+########################################
+# fzf file search
+function search-file() {
+  file_path=$(
+    find . -type f |
+      fzf \
+        +m \
+        -e \
+        --height 40% \
+        --prompt=" > " \
+        --no-sort
+  )
+  LBUFFER+="\"$file_path\""
+}
+
+zle -N search-file
+bindkey '^f' search-file
 
 ########################################
 # powerline-go
@@ -255,6 +276,20 @@ function install_powerline_precmd() {
 if [ "$TERM" != "linux" ]; then
   install_powerline_precmd
 fi
+
+########################################
+# cd with fzf
+function cdf() {
+  cd "$(
+    find . -type d |
+      fzf \
+        +m \
+        -e \
+        --height 40% \
+        --prompt=" > " \
+        --no-sort
+  )"
+}
 
 ########################################
 # software settings
