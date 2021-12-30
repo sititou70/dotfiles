@@ -21,13 +21,12 @@ zstyle ':zle:*' word-chars " /=;@:{},|"
 zstyle ':zle:*' word-style unspecified
 
 # completion
-autoload -U compinit
-compinit -C
+autoload -Uz compinit && compinit
 zstyle ':completion:*:default' menu select=2
-## ignore cases
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 ## enable after sudo
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
+## completion in the middle name
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 # etc
 setopt print_eight_bit
