@@ -78,6 +78,14 @@ if [ "$?" = "0" ]; then
   alias open='xdg-open'
 fi
 
+# git graph
+alias gitgraph-all='git log --graph --oneline --date-order --all'
+alias gitgraph-all-merges='git log --graph --oneline --date-order --merges --all'
+alias gitgraph-all-decoration='git log --graph --oneline --date-order --simplify-by-decoration --all'
+alias gitgraph-fzf="git for-each-ref --format='%(refname:short)' | fzf -m | xargs git log --graph --oneline --date-order"
+alias gitgraph-fzf-merges="git for-each-ref --format='%(refname:short)' | fzf -m | xargs git log --graph --oneline --date-order --merges"
+alias gitgraph-fzf-decoration="git for-each-ref --format='%(refname:short)' | fzf -m | xargs git log --graph --oneline --date-order --simplify-by-decoration"
+
 ########################################
 # coreutils for Mac (brew install coreutils)
 type brew >/dev/null
