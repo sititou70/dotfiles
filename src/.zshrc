@@ -101,7 +101,7 @@ if [ "$?" = "0" ]; then
   eval $(dircolors ~/.dircolors)
 
   if [ -n "$LS_COLORS" ]; then
-    zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+    zstyle ':completion:*' list-colors $(echo "$LS_COLORS" | sed -e "s/:/ /g")
   fi
 fi
 
