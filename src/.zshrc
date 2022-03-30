@@ -337,7 +337,7 @@ if [ -e $GOENV_ROOT ]; then
 fi
 
 # rust (curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh)
-source $HOME/.cargo/env
+[ -e $HOME/.cargo/env ] && source $HOME/.cargo/env
 
 # joke
 source $DOTFILES_PATH/src/joke.zshrc
