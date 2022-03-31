@@ -339,12 +339,9 @@ fi
 # rust (curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh)
 [ -e $HOME/.cargo/env ] && source $HOME/.cargo/env
 
-# jenv (git clone https://github.com/jenv/jenv.git ~/.jenv)
-export JENV_ROOT="$HOME/.jenv"
-if [ -e $JENV_ROOT ]; then
-  export PATH="$JENV_ROOT/bin:$PATH"
-  eval "$(jenv init -)"
-fi
+# sdkman (curl -s "https://get.sdkman.io" | bash)
+export SDKMAN_DIR="$HOME/.sdkman"
+[ -e $SDKMAN_DIR ] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
 # joke
 source $DOTFILES_PATH/src/joke.zshrc
