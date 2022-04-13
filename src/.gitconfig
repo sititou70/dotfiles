@@ -6,6 +6,7 @@
   editor = vim -c \"set fenc=utf-8\"
   pager = less -cm
   quotepath = false
+  ignorecase = false
 [push]
   default = simple
 [commit]
