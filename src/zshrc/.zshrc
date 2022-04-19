@@ -10,6 +10,7 @@ zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "felixr/docker-zsh-completion"
 zplug "g-plane/zsh-yarn-autocompletions", hook-build:"./zplug.zsh", defer:2
+zplug "lukechilds/zsh-better-npm-completion", defer:2
 
 if ! zplug check --verbose; then
   zplug install
