@@ -5,6 +5,18 @@ export DOTFILES_PATH="$HOME/dotfiles"
 source $DOTFILES_PATH/src/zshrc/install-toolchains.zshrc
 
 ########################################
+# plugins
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "felixr/docker-zsh-completion"
+zplug "g-plane/zsh-yarn-autocompletions", hook-build:"./zplug.zsh", defer:2
+
+if ! zplug check --verbose; then
+  zplug install
+fi
+zplug load
+
+########################################
 # basics
 export LANG=ja_JP.UTF-8
 
@@ -26,7 +38,6 @@ zstyle ':zle:*' word-chars " /=;@:{},|"
 zstyle ':zle:*' word-style unspecified
 
 ## completion
-autoload -Uz compinit && compinit -C
 zstyle ':completion:*:default' menu select=2
 ### enable after sudo
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
@@ -65,13 +76,9 @@ bindkey "^[[B" history-beginning-search-forward-end
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-
 alias mkdir='mkdir -p'
-
 alias grep='grep --color'
-
 alias tree='tree -sh'
-
 alias beep='echo -en "\a"'
 
 ## enable alias after sudo

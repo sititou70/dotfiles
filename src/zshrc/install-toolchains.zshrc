@@ -1,4 +1,19 @@
 ########################################
+# zplug
+ZPLUG_DIR="$HOME/.zplug"
+if [ ! -e $ZPLUG_DIR ]; then
+  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+
+  # wait for the installation to complete
+  for i in $(seq 10); do
+    [ -e $ZPLUG_DIR/init.zsh ] && break
+    sleep 1
+  done
+fi
+
+[ -e $ZPLUG_DIR ] && source $ZPLUG_DIR/init.zsh
+
+########################################
 # tmux
 TMUX_DIR="$HOME/.tmux"
 TMUX_LINUX_BIN="https://github.com/tmux/tmux/releases/download/3.1b/tmux-3.1b-x86_64.AppImage"
