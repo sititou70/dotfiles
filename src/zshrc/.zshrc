@@ -2,7 +2,7 @@ export DOTFILES_PATH="$HOME/dotfiles"
 
 ########################################
 # install toolchains
-source $DOTFILES_PATH/src/zshrc/install-toolchains.zshrc
+source $DOTFILES_PATH/src/zshrc/install-toolchains.zsh
 
 ########################################
 # plugins
@@ -183,7 +183,7 @@ fi
 
 ########################################
 # fzf utils
-source $DOTFILES_PATH/src/zshrc/fzf-utils.zshrc
+source $DOTFILES_PATH/src/zshrc/fzf-utils.zsh
 
 ########################################
 # software settings
@@ -208,7 +208,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [ -e $SDKMAN_DIR ] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
 ## joke
-source $DOTFILES_PATH/src/zshrc/joke.zshrc
+source $DOTFILES_PATH/src/zshrc/joke.zsh
 
 ########################################
 # launch tmux
