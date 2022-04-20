@@ -69,7 +69,7 @@ fi
 if [ ! -e $HOME/.fzf ]; then
   echo "no fzf at ~/.fzf, installing..."
   git clone https://github.com/junegunn/fzf.git $HOME/.fzf
-  $HOME/.fzf/install
+  $HOME/.fzf/install --no-update-rc --no-completion --no-key-bindings
 fi
 PATH+=":$HOME/.fzf/bin"
 
