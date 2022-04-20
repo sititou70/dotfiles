@@ -311,19 +311,7 @@ Make Text Bigger</string>
 					<key>Version</key>
 					<integer>1</integer>
 				</dict>
-				<key>0x30-0x120000-0x1d</key>
-				<dict>
-					<key>Action</key>
-					<integer>25</integer>
-					<key>Label</key>
-					<string></string>
-					<key>Text</key>
-					<string>Make Text Normal Size
-Make Text Normal Size</string>
-					<key>Version</key>
-					<integer>1</integer>
-				</dict>
-				<key>0x3d-0x120000-0x1b</key>
+				<key>0x2d-0x100000-0x1b</key>
 				<dict>
 					<key>Action</key>
 					<integer>25</integer>
@@ -332,6 +320,18 @@ Make Text Normal Size</string>
 					<key>Text</key>
 					<string>Make Text Smaller
 Make Text Smaller</string>
+					<key>Version</key>
+					<integer>1</integer>
+				</dict>
+				<key>0x30-0x100000-0x1d</key>
+				<dict>
+					<key>Action</key>
+					<integer>25</integer>
+					<key>Label</key>
+					<string></string>
+					<key>Text</key>
+					<string>Make Text Normal Size
+Make Text Normal Size</string>
 					<key>Version</key>
 					<integer>1</integer>
 				</dict>
