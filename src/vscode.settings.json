@@ -34,5 +34,6 @@
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "editor.fontFamily": "'Cica', 'Noto Sans'"
+  "editor.fontFamily": "'Cica', 'Noto Sans'",
+  "window.restoreFullscreen": true
 }
