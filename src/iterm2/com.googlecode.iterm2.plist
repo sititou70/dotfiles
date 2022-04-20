@@ -486,7 +486,7 @@ Make Text Smaller</string>
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
-			<integer>0</integer>
+			<integer>1</integer>
 			<key>Working Directory</key>
 			<string>/Users/sititou70</string>
 		</dict>
