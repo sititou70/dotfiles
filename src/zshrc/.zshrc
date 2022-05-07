@@ -10,7 +10,6 @@ zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "felixr/docker-zsh-completion"
 zplug "g-plane/zsh-yarn-autocompletions", hook-build:"./zplug.zsh", defer:2
-zplug "lukechilds/zsh-better-npm-completion", defer:2
 
 if ! zplug check --verbose; then
   zplug install
@@ -191,6 +190,7 @@ source $DOTFILES_PATH/src/zshrc/fzf-utils.zsh
 ## n (curl -L https://git.io/n-install | bash)
 export N_PREFIX="$HOME/n"
 [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
+[ -e $N_PREFIX ] && source <(npm completion)
 
 ## goenv (git clone https://github.com/syndbg/goenv.git ~/.goenv)
 export GOENV_ROOT="$HOME/.goenv"
