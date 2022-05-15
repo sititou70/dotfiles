@@ -6,15 +6,19 @@ source $DOTFILES_PATH/src/zshrc/install-toolchains.zsh
 
 ########################################
 # plugins
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "felixr/docker-zsh-completion"
-zplug "g-plane/zsh-yarn-autocompletions", hook-build:"./zplug.zsh", defer:2
+zinit ice wait'!0'
+zinit light "zsh-users/zsh-completions"
 
-if ! zplug check --verbose; then
-  zplug install
-fi
-zplug load
+zinit ice wait'!0'
+zinit light "zsh-users/zsh-syntax-highlighting"
+
+zinit ice wait'!0'
+zinit light "felixr/docker-zsh-completion"
+
+zinit ice wait'!0' atload"zpcdreplay" atclone'./zplug.zsh'
+zinit light "g-plane/zsh-yarn-autocompletions"
+
+autoload -Uz _zinit
 
 ########################################
 # basics
@@ -187,12 +191,11 @@ source $DOTFILES_PATH/src/zshrc/fzf-utils.zsh
 
 ########################################
 # software settings
-## n (curl -L https://git.io/n-install | bash)
+## n (curl -L https://git.io/n-install | bash) (rm -rf ~/n)
 export N_PREFIX="$HOME/n"
 [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
-[ -e $N_PREFIX ] && source <(npm completion)
 
-## goenv (git clone https://github.com/syndbg/goenv.git ~/.goenv)
+## goenv (git clone https://github.com/syndbg/goenv.git ~/.goenv) (rm -rf ~/.goenv)
 export GOENV_ROOT="$HOME/.goenv"
 if [ -e $GOENV_ROOT ]; then
   export PATH="$GOENV_ROOT/bin:$PATH"
@@ -201,10 +204,10 @@ if [ -e $GOENV_ROOT ]; then
   export PATH="$PATH:$GOPATH/bin"
 fi
 
-## rust (curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh)
+## rust (curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh) (rustup self uninstall)
 [ -e $HOME/.cargo/env ] && source $HOME/.cargo/env
 
-## sdkman (curl -s "https://get.sdkman.io" | bash)
+## sdkman (curl -s "https://get.sdkman.io" | bash) (rm -rf ~/.sdkman)
 export SDKMAN_DIR="$HOME/.sdkman"
 [ -e $SDKMAN_DIR ] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 

@@ -1,17 +1,13 @@
 ########################################
-# zplug
-ZPLUG_DIR="$HOME/.zplug"
-if [ ! -e $ZPLUG_DIR ]; then
-  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-
-  # wait for the installation to complete
-  for i in $(seq 10); do
-    [ -e $ZPLUG_DIR/init.zsh ] && break
-    sleep 1
-  done
+# zinit
+ZINIT_DIR="$HOME/.local/share/zinit"
+if [ ! -e $ZINIT_DIR ]; then
+  NO_EDIT=false \
+    NO_TUTORIAL=false \
+    bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
 fi
 
-[ -e $ZPLUG_DIR ] && source $ZPLUG_DIR/init.zsh
+[ -e $ZINIT_DIR ] && source $ZINIT_DIR/zinit.git/zinit.zsh
 
 ########################################
 # tmux
