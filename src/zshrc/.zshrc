@@ -89,8 +89,7 @@ alias beep='echo -en "\a"'
 alias sudo='sudo '
 
 ## open
-type xdg-open >/dev/null
-if [ "$?" = "0" ]; then
+if type xdg-open >/dev/null; then
   alias open='xdg-open'
 fi
 
@@ -104,16 +103,14 @@ alias gitgraph-fzf-decoration="git for-each-ref --format='%(refname:short)' | fz
 
 ########################################
 # coreutils for Mac (brew install coreutils)
-type brew >/dev/null
-if [ "$?" = "0" ]; then
+if type brew >/dev/null; then
   COREUTILS_PATH="$(brew --prefix coreutils)/libexec/gnubin"
   [ -e "$COREUTILS_PATH" ] && PATH="$COREUTILS_PATH:$PATH"
 fi
 
 ########################################
 # dircolors setting
-type dircolors >/dev/null
-if [ "$?" = "0" ]; then
+if type dircolors >/dev/null; then
   eval $(dircolors ~/.dircolors)
 
   if [ -n "$LS_COLORS" ]; then
@@ -123,8 +120,7 @@ fi
 
 ########################################
 # gpg-agent
-type gpgconf >/dev/null
-if [ "$?" = "0" ]; then
+if type gpgconf >/dev/null; then
   export GPG_TTY=$(tty)
   gpgconf --launch gpg-agent
   export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
@@ -216,8 +212,7 @@ source $DOTFILES_PATH/src/zshrc/joke.zsh
 
 ########################################
 # launch tmux
-type tmux >/dev/null
-if [ "$TMUX" = "" -a "$?" = "0" ]; then
+if type tmux >/dev/null && [ "$TMUX" = "" ]; then
   tmux a || tmux
   exit
 fi
