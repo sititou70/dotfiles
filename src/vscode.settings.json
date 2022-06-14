@@ -2,7 +2,6 @@
   "workbench.startupEditor": "newUntitledFile",
   "editor.fontSize": 16,
   "editor.tabSize": 2,
-  "window.zoomLevel": 0,
   "C_Cpp.updateChannel": "Insiders",
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
