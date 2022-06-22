@@ -42,6 +42,7 @@ zstyle ':zle:*' word-chars " /=;@:{},|"
 zstyle ':zle:*' word-style unspecified
 
 ## completion
+autoload -Uz compinit && compinit -C
 zstyle ':completion:*:default' menu select=2
 ### enable after sudo
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
