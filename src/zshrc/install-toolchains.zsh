@@ -35,11 +35,11 @@ fi
 ########################################
 # exa
 EXA_DIR="$HOME/.exa"
-EXA_LINUX_URL="https://github.com/ogham/exa/releases/download/v0.9.0/exa-linux-x86_64-0.9.0.zip"
-EXA_LINUX_BIN="exa-linux-x86_64"
-EXA_MAC_URL="https://github.com/ogham/exa/releases/download/v0.9.0/exa-macos-x86_64-0.9.0.zip"
-EXA_MAC_BIN="exa-macos-x86_64"
-if [ ! -e $EXA_DIR -a $(uname -m) = "x86_64" ]; then
+EXA_LINUX_URL="https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-v0.10.1.zip"
+EXA_LINUX_BIN="bin/exa"
+EXA_MAC_URL="https://github.com/ogham/exa/releases/download/v0.10.1/exa-macos-x86_64-v0.10.1.zip"
+EXA_MAC_BIN="bin/exa"
+if [ ! -e $EXA_DIR ]; then
   echo installing exa...
   mkdir $EXA_DIR
   cd $EXA_DIR
@@ -71,11 +71,11 @@ PATH+=":$HOME/.fzf/bin"
 
 ########################################
 # powerline-go
-POWERLINE_GO_LINUX_URL="https://github.com/justjanne/powerline-go/releases/download/v1.17.0/powerline-go-linux-amd64"
-POWERLINE_GO_MAC_URL="https://github.com/justjanne/powerline-go/releases/download/v1.17.0/powerline-go-darwin-amd64"
+POWERLINE_GO_LINUX_URL="https://github.com/justjanne/powerline-go/releases/download/v1.22.1/powerline-go-linux-amd64"
+POWERLINE_GO_MAC_URL="https://github.com/justjanne/powerline-go/releases/download/v1.22.1/powerline-go-darwin-amd64"
 POWERLINE_GO_DIR="$HOME/.powerline-go"
 POWERLINE_GO_BIN="powerline-go"
-if [ ! -e $POWERLINE_GO_DIR -a $(uname -m) = "x86_64" ]; then
+if [ ! -e $POWERLINE_GO_DIR ]; then
   echo installing powerline go
   mkdir $POWERLINE_GO_DIR
 
