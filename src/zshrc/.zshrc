@@ -188,11 +188,15 @@ source $DOTFILES_PATH/src/zshrc/fzf-utils.zsh
 
 ########################################
 # software settings
-## n (curl -L https://git.io/n-install | bash) (rm -rf ~/n)
+## n
+### install: curl -L https://git.io/n-install | bash
+### uninstall: rm -rf ~/n
 export N_PREFIX="$HOME/n"
 [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 
-## goenv (git clone https://github.com/syndbg/goenv.git ~/.goenv) (rm -rf ~/.goenv)
+## goenv
+### install: git clone https://github.com/syndbg/goenv.git ~/.goenv
+### uninstall: rm -rf ~/.goenv
 export GOENV_ROOT="$HOME/.goenv"
 if [ -e $GOENV_ROOT ]; then
   export PATH="$GOENV_ROOT/bin:$PATH"
@@ -201,10 +205,14 @@ if [ -e $GOENV_ROOT ]; then
   export PATH="$PATH:$GOPATH/bin"
 fi
 
-## rust (curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh) (rustup self uninstall)
+## rust
+### install: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+### uninstall: rustup self uninstall
 [ -e $HOME/.cargo/env ] && source $HOME/.cargo/env
 
-## sdkman (curl -s "https://get.sdkman.io" | bash) (rm -rf ~/.sdkman)
+## sdkman
+### install: curl -s "https://get.sdkman.io" | bash
+### uninstall: rm -rf ~/.sdkman
 export SDKMAN_DIR="$HOME/.sdkman"
 [ -e $SDKMAN_DIR ] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
