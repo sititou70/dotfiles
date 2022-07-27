@@ -1,0 +1,23 @@
+// 既定値を上書きするには、このファイル内にキー バインドを挿入しますauto[]
+[
+  {
+    "key": "alt+left",
+    "command": "workbench.action.navigateBack",
+    "when": "canNavigateBack"
+  },
+  {
+    "key": "ctrl+alt+[Minus]",
+    "command": "-workbench.action.navigateBack",
+    "when": "canNavigateBack"
+  },
+  {
+    "key": "alt+right",
+    "command": "workbench.action.navigateForward",
+    "when": "canNavigateForward"
+  },
+  {
+    "key": "ctrl+shift+[IntlRo]",
+    "command": "-workbench.action.navigateForward",
+    "when": "canNavigateForward"
+  }
+]
