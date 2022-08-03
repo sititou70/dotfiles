@@ -102,3 +102,10 @@ nnoremap sv :vsplit<CR>
 " skip word
 nnoremap <C-Right> w
 nnoremap <C-Left> b
+nnoremap <A-Right> w
+nnoremap <A-Left> b
+
+inoremap <C-Right> <C-o>w
+inoremap <C-Left> <C-o>b
+inoremap <A-Right> <C-o>w
+inoremap <A-Left> <C-o>b
