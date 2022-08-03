@@ -13,7 +13,7 @@ src/terminator.config -> $HOME/.config/terminator/config
 src/vscode/settings.json -> $HOME/.config/Code/User/settings.json
 src/vscode/settings.json -> $HOME/Library/Application Support/Code/User/settings.json
 src/vscode/keybindings.json -> $HOME/.config/Code/User/keybindings.json
-src/vscode/keybindings.json -> $HOME/Library/Application Support/Code/User/keybindings.json
+src/vscode/keybindings.mac.json -> $HOME/Library/Application Support/Code/User/keybindings.json
 src/sshcontrol -> $HOME/.gnupg/sshcontrol
 src/gpg-agent.conf -> $HOME/.gnupg/gpg-agent.conf
 src/karabiner.json -> $HOME/.config/karabiner/karabiner.json
