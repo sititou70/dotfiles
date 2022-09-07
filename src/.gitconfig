@@ -8,9 +8,11 @@
   quotepath = false
   ignorecase = false
 [push]
-  default = simple
+	default = current
 [commit]
   template = ~/dotfiles/src/commit_template
 	gpgsign = true
 [pull]
 	ff = only
+[fetch]
+	prune = true
