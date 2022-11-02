@@ -35,5 +35,6 @@
   },
   "editor.fontFamily": "'Cica', 'Noto Sans'",
   "window.restoreFullscreen": true,
-  "editor.accessibilitySupport": "off"
+  "editor.accessibilitySupport": "off",
+  "emmet.showExpandedAbbreviation": "never"
 }
