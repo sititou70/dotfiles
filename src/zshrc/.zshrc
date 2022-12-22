@@ -1,6 +1,10 @@
 export DOTFILES_PATH="$HOME/dotfiles"
 
 ########################################
+# brew for M1 Mac
+export PATH="/opt/homebrew/bin:$PATH"
+
+########################################
 # install toolchains
 source $DOTFILES_PATH/src/zshrc/install-toolchains.zsh
 
@@ -223,6 +227,9 @@ export CABAL_BIN_DIR="$HOME/.cabal/bin"
 [ -e $CABAL_BIN_DIR ] && PATH+=":$CABAL_BIN_DIR"
 ## idris
 ### install: cabal update; cabal install -f FFI idris
+
+## Docker Desktop
+[ -e $HOME/.docker/init-zsh.sh ] && source $HOME/.docker/init-zsh.sh || true
 
 ## joke
 source $DOTFILES_PATH/src/zshrc/joke.zsh
