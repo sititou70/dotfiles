@@ -17,6 +17,9 @@ zinit ice wait'!0'
 zinit light "zsh-users/zsh-syntax-highlighting"
 
 zinit ice wait'!0'
+zinit light SebastienWae/pnpm-completions
+
+zinit ice wait'!0'
 zinit light "felixr/docker-zsh-completion"
 
 zinit ice wait'!0' atload"zpcdreplay" atclone'./zplug.zsh'
