@@ -36,5 +36,6 @@
   "editor.fontFamily": "'Cica', 'Noto Sans'",
   "window.restoreFullscreen": true,
   "editor.accessibilitySupport": "off",
-  "emmet.showExpandedAbbreviation": "never"
+  "emmet.showExpandedAbbreviation": "never",
+  "markdown-preview-enhanced.previewTheme": "github-dark.css"
 }
