@@ -239,6 +239,9 @@ alias gosh='rlwrap gosh -i -I "."'
 ## Docker Desktop
 [ -e $HOME/.docker/init-zsh.sh ] && source $HOME/.docker/init-zsh.sh || true
 
+## Temporary local binary
+PATH="$HOME/bin:$PATH"
+
 ## joke
 source $DOTFILES_PATH/src/zshrc/joke.zsh
 
