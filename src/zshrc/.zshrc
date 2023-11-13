@@ -231,11 +231,6 @@ export CABAL_BIN_DIR="$HOME/.cabal/bin"
 ## idris
 ### install: cabal update; cabal install -f FFI idris
 
-## scheme (gache)
-### install: sudo apt install gauche rlwrap
-### uninstall: sudo apt remove gauche rlwrap
-alias gosh='rlwrap gosh -i -I "."'
-
 ## Docker Desktop
 [ -e $HOME/.docker/init-zsh.sh ] && source $HOME/.docker/init-zsh.sh || true
 
