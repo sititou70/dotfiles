@@ -16,3 +16,5 @@
 	ff = only
 [fetch]
 	prune = true
+[alias]
+	co = checkout
