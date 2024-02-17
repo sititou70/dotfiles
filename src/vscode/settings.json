@@ -38,5 +38,6 @@
   "editor.accessibilitySupport": "off",
   "emmet.showExpandedAbbreviation": "never",
   "markdown-preview-enhanced.previewTheme": "github-dark.css",
-  "editor.stickyScroll.maxLineCount": 10
+  "codesnap.showWindowControls": false,
+  "codesnap.showWindowTitle": true
 }
