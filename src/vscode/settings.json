@@ -41,5 +41,6 @@
   "codesnap.showWindowControls": false,
   "codesnap.showWindowTitle": true,
   "editor.stickyScroll.enabled": false,
-  "workbench.tree.enableStickyScroll": false
+  "workbench.tree.enableStickyScroll": false,
+  "files.insertFinalNewline": true
 }
