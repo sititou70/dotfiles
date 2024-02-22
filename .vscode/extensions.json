@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "foxundermoon.shell-format",
+    "eamodio.gitlens",
+    "ms-ceintl.vscode-language-pack-ja",
+    "github.github-vscode-theme",
+    "esbenp.prettier-vscode"
+  ]
+}
