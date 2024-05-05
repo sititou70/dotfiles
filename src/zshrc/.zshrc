@@ -96,19 +96,6 @@ alias beep='echo -en "\a"'
 ## enable alias after sudo
 alias sudo='sudo '
 
-## open
-if type xdg-open >/dev/null; then
-  alias open='xdg-open'
-fi
-
-## git graph
-alias gitgraph-all='git log --graph --oneline --date-order --all'
-alias gitgraph-all-merges='git log --graph --oneline --date-order --merges --all'
-alias gitgraph-all-decoration='git log --graph --oneline --date-order --simplify-by-decoration --all'
-alias gitgraph-fzf="git for-each-ref --format='%(refname:short)' | fzf -m | xargs git log --graph --oneline --date-order"
-alias gitgraph-fzf-merges="git for-each-ref --format='%(refname:short)' | fzf -m | xargs git log --graph --oneline --date-order --merges"
-alias gitgraph-fzf-decoration="git for-each-ref --format='%(refname:short)' | fzf -m | xargs git log --graph --oneline --date-order --simplify-by-decoration"
-
 ########################################
 # coreutils for Mac (brew install coreutils)
 if type brew >/dev/null; then
@@ -192,6 +179,10 @@ fi
 ########################################
 # fzf utils
 source $DOTFILES_PATH/src/zshrc/fzf-utils.zsh
+
+########################################
+# dotfiles bin
+PATH="$PATH:$DOTFILES_PATH/src/bin"
 
 ########################################
 # software settings

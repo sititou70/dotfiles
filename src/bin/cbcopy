@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if which pbcopy >/dev/null; then
+  pbcopy
+  exit
+fi
+
+if which xsel >/dev/null; then
+  xsel --clipboard --input
+  exit
+fi
+
+echo "$0: unsupported environment"
+exit 1

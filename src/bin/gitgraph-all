@@ -1,0 +1,7 @@
+#!/bin/bash
+
+git log \
+  --graph \
+  --oneline \
+  --date-order \
+  --all

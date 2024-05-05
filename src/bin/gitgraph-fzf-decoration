@@ -1,0 +1,10 @@
+#!/bin/bash
+
+git for-each-ref \
+  --format='%(refname:short)' |
+  fzf -m |
+  xargs git log \
+    --graph \
+    --oneline \
+    --date-order \
+    --simplify-by-decoration
