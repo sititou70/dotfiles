@@ -554,5 +554,7 @@ Make Text Normal Size</string>
 	<false/>
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
+	<key>findMode_iTerm</key>
+	<integer>0</integer>
 </dict>
 </plist>
