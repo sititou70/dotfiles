@@ -5,12 +5,11 @@ cd $(dirname $0)
 . ./consts.sh
 
 # main
-IFS="
-"
+echo "$FILES" | while read item; do
+  [ "$item" = "" ] && continue
 
-for item in $FILES; do
   dest_file=$(echo "$item" | sed -e "s/ -> /:/" | cut -d ":" -f 2)
 
-  echo uninstalled: $dest_file
-  rm -rf $dest_file
+  echo uninstalled: "$dest_file"
+  rm -rf "$dest_file"
 done
