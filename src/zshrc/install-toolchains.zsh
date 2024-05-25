@@ -10,29 +10,6 @@ fi
 [ -e $ZINIT_DIR ] && source $ZINIT_DIR/zinit.git/zinit.zsh
 
 ########################################
-# tmux
-TMUX_DIR="$HOME/.tmux"
-TMUX_LINUX_BIN="https://github.com/tmux/tmux/releases/download/3.1b/tmux-3.1b-x86_64.AppImage"
-
-if [ ! -e $TMUX_DIR -a $(uname -m) = "x86_64" ]; then
-  echo installing tmux...
-  mkdir $TMUX_DIR
-  cd $TMUX_DIR
-
-  case ${OSTYPE} in
-  linux*)
-    wget $TMUX_LINUX_BIN
-    mv $(basename $TMUX_LINUX_BIN) tmux
-    chmod 744 tmux
-    ;;
-  esac
-
-  cd ..
-fi
-
-[ -e $TMUX_DIR ] && PATH+=":$TMUX_DIR"
-
-########################################
 # exa
 EXA_DIR="$HOME/.exa"
 EXA_LINUX_URL="https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-v0.10.1.zip"

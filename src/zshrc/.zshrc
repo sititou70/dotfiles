@@ -1,8 +1,9 @@
-export DOTFILES_PATH="$HOME/dotfiles"
+ORIG_PATH="$PATH"
+DOTFILES_PATH="$HOME/dotfiles"
 
 ########################################
 # brew for M1 Mac
-export PATH="/opt/homebrew/bin:$PATH"
+PATH="/opt/homebrew/bin:$PATH"
 
 ########################################
 # install toolchains
@@ -197,10 +198,10 @@ PATH="$N_PREFIX/bin:$PATH"
 ### uninstall: rm -rf ~/.goenv
 export GOENV_ROOT="$HOME/.goenv"
 if [ -e $GOENV_ROOT ]; then
-  export PATH="$GOENV_ROOT/bin:$PATH"
+  PATH="$GOENV_ROOT/bin:$PATH"
   eval "$(goenv init -)"
-  export PATH="$GOROOT/bin:$PATH"
-  export PATH="$PATH:$GOPATH/bin"
+  PATH="$GOROOT/bin:$PATH"
+  PATH="$PATH:$GOPATH/bin"
 fi
 
 ## rust
@@ -234,6 +235,6 @@ source $DOTFILES_PATH/src/zshrc/joke.zsh
 ########################################
 # launch tmux
 if type tmux >/dev/null && [ "$TMUX" = "" ]; then
-  tmux a || tmux
+  PATH="$ORIG_PATH" tmux a || PATH="$ORIG_PATH" tmux
   exit
 fi
