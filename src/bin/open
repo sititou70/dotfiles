@@ -1,7 +1,0 @@
-#!/bin/bash
-
-if which xdg-open >/dev/null; then
-  xdg-open $@
-fi
-
-open $@
