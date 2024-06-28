@@ -1,9 +1,15 @@
-ORIG_PATH="$PATH"
 DOTFILES_PATH="$HOME/dotfiles"
 
 ########################################
+# path settings
+addpath() {
+  path=("$1" $path)
+}
+typeset -U path PATH
+
+########################################
 # brew for M1 Mac
-PATH="/opt/homebrew/bin:$PATH"
+addpath "/opt/homebrew/bin"
 
 ########################################
 # install toolchains
@@ -100,8 +106,7 @@ alias sudo='sudo '
 ########################################
 # coreutils for Mac (brew install coreutils)
 if type brew >/dev/null; then
-  COREUTILS_PATH="$(brew --prefix coreutils)/libexec/gnubin"
-  [ -e "$COREUTILS_PATH" ] && PATH="$COREUTILS_PATH:$PATH"
+  addpath "$(brew --prefix coreutils)/libexec/gnubin"
 fi
 
 ########################################
@@ -183,7 +188,7 @@ source $DOTFILES_PATH/src/zshrc/fzf-utils.zsh
 
 ########################################
 # dotfiles bin
-PATH="$PATH:$DOTFILES_PATH/src/bin"
+addpath "$DOTFILES_PATH/src/bin"
 
 ########################################
 # software settings
@@ -191,17 +196,17 @@ PATH="$PATH:$DOTFILES_PATH/src/bin"
 ### install: curl -L https://git.io/n-install | bash
 ### uninstall: rm -rf ~/n
 export N_PREFIX="$HOME/n"
-PATH="$N_PREFIX/bin:$PATH"
+addpath "$N_PREFIX/bin"
 
 ## goenv
 ### install: git clone https://github.com/syndbg/goenv.git ~/.goenv
 ### uninstall: rm -rf ~/.goenv
 export GOENV_ROOT="$HOME/.goenv"
 if [ -e $GOENV_ROOT ]; then
-  PATH="$GOENV_ROOT/bin:$PATH"
   eval "$(goenv init -)"
-  PATH="$GOROOT/bin:$PATH"
-  PATH="$PATH:$GOPATH/bin"
+  addpath "$GOENV_ROOT/bin"
+  addpath "$GOROOT/bin"
+  addpath "$GOPATH/bin"
 fi
 
 ## rust
@@ -218,8 +223,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 ## cabal(Ubuntu)
 ### install: sudo apt install cabal-install libffi-dev
 ### uninstall: sudo apt remove cabal-install libffi-dev
-export CABAL_BIN_DIR="$HOME/.cabal/bin"
-[ -e $CABAL_BIN_DIR ] && PATH+=":$CABAL_BIN_DIR"
+addpath "$HOME/.cabal/bin"
 ## idris
 ### install: cabal update; cabal install -f FFI idris
 
@@ -227,7 +231,7 @@ export CABAL_BIN_DIR="$HOME/.cabal/bin"
 [ -e $HOME/.docker/init-zsh.sh ] && source $HOME/.docker/init-zsh.sh || true
 
 ## Temporary local binary
-PATH="$HOME/bin:$PATH"
+addpath "$HOME/bin"
 
 ## joke
 source $DOTFILES_PATH/src/zshrc/joke.zsh
@@ -235,6 +239,6 @@ source $DOTFILES_PATH/src/zshrc/joke.zsh
 ########################################
 # launch tmux
 if type tmux >/dev/null && [ "$TMUX" = "" ]; then
-  PATH="$ORIG_PATH" tmux a || PATH="$ORIG_PATH" tmux
+  tmux a || tmux
   exit
 fi

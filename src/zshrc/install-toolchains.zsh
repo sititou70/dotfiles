@@ -44,7 +44,7 @@ if [ ! -e $HOME/.fzf ]; then
   git clone https://github.com/junegunn/fzf.git $HOME/.fzf
   $HOME/.fzf/install --no-update-rc --no-completion --no-key-bindings
 fi
-PATH+=":$HOME/.fzf/bin"
+addpath "$HOME/.fzf/bin"
 
 ########################################
 # powerline-go
