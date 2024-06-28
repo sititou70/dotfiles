@@ -10,6 +10,6 @@ echo "$FILES" | while read item; do
 
   dest_file=$(echo "$item" | sed -e "s/ -> /:/" | cut -d ":" -f 2)
 
-  echo uninstalled: "$dest_file"
   rm -rf "$dest_file"
+  echo "uninstalled: $dest_file"
 done

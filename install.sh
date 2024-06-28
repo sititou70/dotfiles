@@ -13,9 +13,9 @@ echo "$FILES" | while read item; do
   dest_dir=$(dirname "$dest_file")
 
   if [ -e "$dest_dir" ]; then
+    rm -rf "$dest_file"
+    ln -sf "$(pwd)/$source_file" "$dest_file"
     printf "${GREEN}installed${RESET}: $source_file -> $dest_file\n"
-    rm -rf $dest_file
-    ln -sf $(pwd)/$source_file $dest_file
   else
     printf "${RED}failed${RESET}:    $source_file: $dest_dir not found\n"
   fi
