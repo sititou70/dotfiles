@@ -17,22 +17,18 @@ source $DOTFILES_PATH/src/zshrc/install-toolchains.zsh
 
 ########################################
 # plugins
-zinit ice wait'!0'
-zinit light "zsh-users/zsh-completions"
+[ -e $ZPLUG_DIR ] && source $ZPLUG_DIR/init.zsh
 
-zinit ice wait'!0'
-zinit light "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "g-plane/pnpm-shell-completion", hook-build:"./zplug.zsh", defer:2
+zplug "greymd/docker-zsh-completion"
+zplug "nnao45/zsh-kubectl-completion"
 
-zinit ice wait'!0'
-zinit light SebastienWae/pnpm-completions
-
-zinit ice wait'!0'
-zinit light "felixr/docker-zsh-completion"
-
-zinit ice wait'!0' atload"zpcdreplay" atclone'./zplug.zsh'
-zinit light "g-plane/zsh-yarn-autocompletions"
-
-autoload -Uz _zinit
+if ! zplug check --verbose; then
+  zplug install
+fi
+zplug load
 
 ########################################
 # basics
@@ -56,7 +52,6 @@ zstyle ':zle:*' word-chars " /=;@:{},|"
 zstyle ':zle:*' word-style unspecified
 
 ## completion
-autoload -Uz compinit && compinit -C
 zstyle ':completion:*:default' menu select=2
 ### enable after sudo
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
