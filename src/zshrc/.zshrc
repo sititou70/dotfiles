@@ -23,14 +23,14 @@ zinit light "zsh-users/zsh-completions"
 zinit ice wait'!0'
 zinit light "zsh-users/zsh-syntax-highlighting"
 
-zinit ice wait'!0'
-zinit light SebastienWae/pnpm-completions
+zinit ice atload"zpcdreplay" atclone"./zplug.zsh" atpull"%atclone"
+zinit light "g-plane/pnpm-shell-completion"
 
 zinit ice wait'!0'
 zinit light "felixr/docker-zsh-completion"
 
-zinit ice wait'!0' atload"zpcdreplay" atclone'./zplug.zsh'
-zinit light "g-plane/zsh-yarn-autocompletions"
+zinit ice atload"zpcdreplay" atclone"zsh-kubectl-completion.plugin.zsh" atpull"%atclone"
+zinit light "nnao45/zsh-kubectl-completion"
 
 autoload -Uz _zinit
 
@@ -56,7 +56,7 @@ zstyle ':zle:*' word-chars " /=;@:{},|"
 zstyle ':zle:*' word-style unspecified
 
 ## completion
-autoload -Uz compinit && compinit -C
+autoload compinit -Uz && compinit -u
 zstyle ':completion:*:default' menu select=2
 ### enable after sudo
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
