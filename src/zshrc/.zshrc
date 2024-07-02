@@ -1,4 +1,4 @@
-DOTFILES_PATH="$HOME/dotfiles"
+export DOTFILES_PATH="$HOME/dotfiles"
 
 ########################################
 # path settings
