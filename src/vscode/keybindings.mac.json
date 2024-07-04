@@ -1,4 +1,3 @@
-// 既定値を上書きするには、このファイル内にキー バインドを挿入しますauto[]
 [
   {
     "key": "cmd+left",
@@ -19,5 +18,9 @@
     "key": "ctrl+shift+[IntlRo]",
     "command": "-workbench.action.navigateForward",
     "when": "canNavigateForward"
+  },
+  {
+    "key": "cmd+0",
+    "command": "workbench.action.zoomReset"
   }
 ]
