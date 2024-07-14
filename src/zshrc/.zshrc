@@ -24,6 +24,7 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "g-plane/pnpm-shell-completion", hook-build:"./zplug.zsh", defer:2
 zplug "greymd/docker-zsh-completion"
 zplug "nnao45/zsh-kubectl-completion"
+zplug "gradle/gradle-completion"
 
 if ! zplug check --verbose; then
   zplug install
