@@ -223,6 +223,11 @@ addpath "$HOME/.cabal/bin"
 ## idris
 ### install: cabal update; cabal install -f FFI idris
 
+## opem
+### install: sudo apt install opam
+### install: brew install opam
+[ -e "$HOME/.opam/opam-init/init.zsh" ] && source "$HOME/.opam/opam-init/init.zsh" >/dev/null 2>/dev/null
+
 ## Docker Desktop
 [ -e $HOME/.docker/init-zsh.sh ] && source $HOME/.docker/init-zsh.sh || true
 
