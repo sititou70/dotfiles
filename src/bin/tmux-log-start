@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cd $HOME
+
+[ ! -e .tmux ] && mkdir .tmux
+[ ! -e .tmux/log ] && mkdir .tmux/log
+
+filename="$(date +'%Y-%m-%d-%H-%M-%S').log"
+
+tmux pipe-pane "cat > .tmux/log/$filename"
