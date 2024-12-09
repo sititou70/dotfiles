@@ -1,0 +1,6 @@
+#!/bin/bash
+
+git log --oneline $1 |
+  fzf \
+    --layout reverse \
+    --preview "git show \$(echo {} | cut -d ' ' -f 1):./$1"
