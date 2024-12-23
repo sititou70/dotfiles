@@ -1,0 +1,21 @@
+#!/bin/bash
+
+BOTTOM_CMD=""
+if which bottom >/dev/null; then
+  BOTTOM_CMD="bottom"
+fi
+if which btm >/dev/null; then
+  BOTTOM_CMD="btm"
+fi
+
+# main
+current_session_name=$(tmux list-sessions | grep attached | cut -d ":" -f 1)
+
+# pane 1
+tmux send-key -t $current_session_name.1 \
+  "btop" C-m
+
+# pane 2
+tmux split-window -h -l 40% -t $current_session_name
+tmux send-key -t $current_session_name.2 \
+  "$BOTTOM_CMD" C-m
