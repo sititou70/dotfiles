@@ -1,6 +1,12 @@
 #!/bin/bash
 
+tempfile="git-file-history.tmp"
+trap 'rm -rf "$tempfile"' EXIT
+
 git log --oneline $1 |
   fzf \
     --layout reverse \
-    --preview "git show \$(echo {} | cut -d ' ' -f 1):./$1"
+    --preview " \
+      git show \$(echo {} | cut -d ' ' -f 1):./$1 > $tempfile; \
+      echo {}; \
+    "
