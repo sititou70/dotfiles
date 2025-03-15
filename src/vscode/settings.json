@@ -43,5 +43,7 @@
   "editor.stickyScroll.enabled": false,
   "workbench.tree.enableStickyScroll": false,
   "files.insertFinalNewline": true,
-  "git.openRepositoryInParentFolders": "always"
+  "git.openRepositoryInParentFolders": "always",
+  "window.commandCenter": false,
+  "workbench.layoutControl.enabled": false
 }
