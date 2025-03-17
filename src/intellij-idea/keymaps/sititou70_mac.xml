@@ -1,37 +1,48 @@
 <keymap version="1" name="sititou70_mac" parent="Mac OS X 10.5+">
   <action id="Back">
-    <keyboard-shortcut first-keystroke="meta left" />
+    <keyboard-shortcut first-keystroke="meta left"/>
   </action>
+  <action id="CompareTwoFiles"/>
+  <action id="Diff.ShowDiff"/>
+  <action id="EditorDuplicate"/>
   <action id="EditorLineEnd">
-    <keyboard-shortcut first-keystroke="ctrl e" />
-    <keyboard-shortcut first-keystroke="end" />
+    <keyboard-shortcut first-keystroke="ctrl e"/>
+    <keyboard-shortcut first-keystroke="end"/>
   </action>
   <action id="EditorLineStart">
-    <keyboard-shortcut first-keystroke="ctrl a" />
-    <keyboard-shortcut first-keystroke="home" />
+    <keyboard-shortcut first-keystroke="ctrl a"/>
+    <keyboard-shortcut first-keystroke="home"/>
   </action>
-  <action id="FileChooser.TogglePathBar" />
+  <action id="FileChooser.GotoDesktop"/>
+  <action id="FileChooser.TogglePathBar"/>
   <action id="Forward">
-    <keyboard-shortcut first-keystroke="meta right" />
+    <keyboard-shortcut first-keystroke="meta right"/>
   </action>
   <action id="GotoDeclaration">
-    <keyboard-shortcut first-keystroke="f12" />
+    <keyboard-shortcut first-keystroke="f12"/>
   </action>
-  <action id="GotoTest" />
-  <action id="JumpToLastWindow" />
+  <action id="GotoTest"/>
+  <action id="GuiDesigner.Duplicate"/>
+  <action id="JumpToLastWindow"/>
   <action id="NextTab">
-    <keyboard-shortcut first-keystroke="meta alt right" />
+    <keyboard-shortcut first-keystroke="meta alt right"/>
   </action>
-  <action id="ParameterInfo" />
+  <action id="ParameterInfo"/>
   <action id="PreviousTab">
-    <keyboard-shortcut first-keystroke="meta alt left" />
+    <keyboard-shortcut first-keystroke="meta alt left"/>
   </action>
   <action id="ReopenClosedTab">
-    <keyboard-shortcut first-keystroke="shift meta t" />
+    <keyboard-shortcut first-keystroke="shift meta t"/>
   </action>
+  <action id="RunDashboard.CopyConfiguration"/>
   <action id="SearchEverywhere">
-    <keyboard-shortcut first-keystroke="meta p" />
-    <keyboard-shortcut first-keystroke="shift meta p" />
+    <keyboard-shortcut first-keystroke="meta p"/>
+    <keyboard-shortcut first-keystroke="shift meta p"/>
   </action>
-  <action id="ServiceView.ShowServices" />
+  <action id="SelectNextOccurrence">
+    <keyboard-shortcut first-keystroke="meta d"/>
+  </action>
+  <action id="SendEOF"/>
+  <action id="ServiceView.ShowServices"/>
+  <action id="XDebugger.CopyWatch"/>
 </keymap>
