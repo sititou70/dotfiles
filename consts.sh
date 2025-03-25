@@ -19,6 +19,7 @@ src/gpg-agent.conf -> $HOME/.gnupg/gpg-agent.conf
 src/karabiner.json -> $HOME/.config/karabiner/karabiner.json
 src/intellij-idea/keymaps -> $HOME/.config/JetBrains/*/keymaps
 src/intellij-idea/keymaps -> $HOME/Library/Application\ Support/JetBrains/*/keymaps
+src/nvtop.interface.ini -> $HOME/.config/nvtop/interface.ini
 "
 
 # colors
