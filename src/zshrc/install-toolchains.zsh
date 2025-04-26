@@ -12,34 +12,6 @@ if [ ! -e $ZPLUG_DIR ]; then
 fi
 
 ########################################
-# exa
-EXA_DIR="$HOME/.exa"
-EXA_LINUX_URL="https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-v0.10.1.zip"
-EXA_LINUX_BIN="bin/exa"
-EXA_MAC_URL="https://github.com/ogham/exa/releases/download/v0.10.1/exa-macos-x86_64-v0.10.1.zip"
-EXA_MAC_BIN="bin/exa"
-if [ ! -e $EXA_DIR ]; then
-  echo installing exa...
-  mkdir $EXA_DIR
-  cd $EXA_DIR
-
-  case ${OSTYPE} in
-  linux*)
-    wget $EXA_LINUX_URL
-    unzip $(basename $EXA_LINUX_URL)
-    rm -rf $(basename $EXA_LINUX_URL)
-    ;;
-  darwin*)
-    wget $EXA_MAC_URL
-    unzip $(basename $EXA_MAC_URL)
-    rm -rf $(basename $EXA_MAC_URL)
-    ;;
-  esac
-
-  cd ..
-fi
-
-########################################
 # fzf
 if [ ! -e $HOME/.fzf ]; then
   echo "no fzf at ~/.fzf, installing..."
