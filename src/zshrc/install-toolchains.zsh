@@ -1,3 +1,5 @@
+########################################
+# zplug
 ZPLUG_DIR="$HOME/.zplug"
 if [ ! -e $ZPLUG_DIR ]; then
   curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
@@ -9,6 +11,7 @@ if [ ! -e $ZPLUG_DIR ]; then
   done
 fi
 
+########################################
 # fzf
 if [ ! -e $HOME/.fzf ]; then
   echo "no fzf at ~/.fzf, installing..."
