@@ -33,7 +33,7 @@
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "editor.fontFamily": "'Cica', 'Noto Sans'",
+  "editor.fontFamily": "HackGen Console NF",
   "window.restoreFullscreen": true,
   "editor.accessibilitySupport": "off",
   "emmet.showExpandedAbbreviation": "never",
