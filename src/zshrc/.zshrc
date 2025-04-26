@@ -100,7 +100,7 @@ alias beep='echo -en "\a"'
 alias sudo='sudo '
 
 ########################################
-# coreutils for Mac (brew install coreutils)
+# coreutils for Mac
 if type brew >/dev/null; then
   addpath "$(brew --prefix coreutils)/libexec/gnubin"
 fi
