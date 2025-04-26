@@ -124,20 +124,12 @@ if type gpgconf >/dev/null; then
 fi
 
 ########################################
-# exa
+# eza
 ## ls alias
 alias ll='ls -alh'
-if [ -e $EXA_DIR ]; then
-  case ${OSTYPE} in
-  linux*)
-    alias ls="$EXA_DIR/$EXA_LINUX_BIN --icons --classify --sort=type"
-    ;;
-  darwin*)
-    alias ls="$EXA_DIR/$EXA_MAC_BIN --icons --classify --sort=type"
-    ;;
-  esac
-
-  alias ll="ls -alhg --git --time-style long-iso --color-scale"
+if type eza > /dev/null; then
+  alias ls="eza --icons --classify --sort=type"
+  alias ll="eza -alhg --git --time-style=long-iso --color-scale"
 fi
 
 ## exacolors
