@@ -130,14 +130,14 @@ alias ll='ls -alh'
 if type eza >/dev/null; then
   BASIC_OPTIONS="--icons --classify --sort=type "
   alias ls="eza $BASIC_OPTIONS"
-  alias ll="eza $BASIC_OPTIONS -alhg --git --time-style=long-iso --color-scale"
+  alias ll="eza $BASIC_OPTIONS -alhg --git --time-style=long-iso"
 fi
 
-## exacolors
-EXA_COLORS_FILE="$HOME/.exacolors"
-if [ -e $EXA_COLORS_FILE ]; then
-  export EXA_COLORS=$(
-    cat $EXA_COLORS_FILE |
+## ezacolors
+EZA_COLORS_FILE="$HOME/.ezacolors"
+if [ -e $EZA_COLORS_FILE ]; then
+  export EZA_COLORS=$(
+    cat $EZA_COLORS_FILE |
       grep -v -e "^#" |
       grep -v -e "^$" |
       xargs echo |

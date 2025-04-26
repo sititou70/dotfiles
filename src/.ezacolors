@@ -1,3 +1,9 @@
+# see: https://github.com/eza-community/eza/blob/main/man/eza_colors.5.md
+
+# files
+sc=00;38;5;245
+bu=00;38;5;245
+
 # timestamp
 da=00;38;5;238
 
