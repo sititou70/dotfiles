@@ -127,9 +127,10 @@ fi
 # eza
 ## ls alias
 alias ll='ls -alh'
-if type eza > /dev/null; then
-  alias ls="eza --icons --classify --sort=type"
-  alias ll="eza -alhg --git --time-style=long-iso --color-scale"
+if type eza >/dev/null; then
+  BASIC_OPTIONS="--icons --classify --sort=type "
+  alias ls="eza $BASIC_OPTIONS"
+  alias ll="eza $BASIC_OPTIONS -alhg --git --time-style=long-iso --color-scale"
 fi
 
 ## exacolors
