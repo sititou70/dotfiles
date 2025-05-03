@@ -1,0 +1,6 @@
+#!/bin/bash
+
+git log --oneline |
+  fzf --reverse --preview '\
+    git show --color=always $(echo {} | cut -d " " -f 1) \
+  '
