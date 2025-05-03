@@ -1,0 +1,28 @@
+#!/bin/bash
+set -eu
+
+if ! type docker >/dev/null; then
+  echo "docker not found"
+fi
+
+if [ -z "$(docker images -q sititou70-dotfiles-tte 2>/dev/null)" ]; then
+  echo "
+    FROM python:3.9.22-alpine3.21
+    RUN pip install terminaltexteffects
+  " | docker build - --tag sititou70-dotfiles-tte
+fi
+
+effect=$(
+  echo "beams,binarypath,blackhole,bouncyballs,bubbles,burn,colorshift,crumble,decrypt,errorcorrect,expand,fireworks,highlight,laseretch,matrix,middleout,orbittingvolley,overflow,pour,print,rain,randomsequence,rings,scattered,slice,slide,spotlights,spray,swarm,sweep,synthgrid,unstable,vhstape,waves,wipe" |
+    tr "," "\n" |
+    shuf |
+    head -n 1
+)
+
+docker run \
+  --rm \
+  -i \
+  -e COLUMNS="$(tput cols)" \
+  -e LINES="$(tput lines)" \
+  sititou70-dotfiles-tte \
+  tte $effect
