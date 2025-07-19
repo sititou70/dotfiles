@@ -1,0 +1,25 @@
+#!/bin/bash
+set -eu
+
+if [ ! -e $HOME/tmux-balance-pane-size ]; then
+  exit
+fi
+
+cd $HOME/tmux-balance-pane-size
+
+for command in node npm; do
+  if ! type $command >/dev/null; then
+    echo "$command not found !!!"
+    exit
+  fi
+done
+
+if [ ! -e node_modules ]; then
+  npm i
+fi
+
+if [ ! -e dist ]; then
+  npm run build
+fi
+
+node dist/index.js
