@@ -192,8 +192,8 @@ addpath "$N_PREFIX/bin"
 ### uninstall: rm -rf ~/.goenv
 export GOENV_ROOT="$HOME/.goenv"
 if [ -e $GOENV_ROOT ]; then
-  eval "$(goenv init -)"
   addpath "$GOENV_ROOT/bin"
+  eval "$(goenv init -)"
   addpath "$GOROOT/bin"
   addpath "$GOPATH/bin"
 fi
