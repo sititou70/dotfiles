@@ -4,15 +4,12 @@
 current_session_name=$(tmux list-sessions | grep attached | cut -d ":" -f 1)
 
 # pane 1
-tmux send-key -t $current_session_name.1 \
-  "btop -u 500" C-m
+tmux send-key "btop -u 500" C-m
 
 # pane 2
 tmux split-window -h -l 35% -t $current_session_name
-tmux send-key -t $current_session_name.2 \
-  "nvtop" C-m
+tmux send-key "nvtop" C-m
 
 # pane 3
 tmux split-window -v -l 50% -t $current_session_name
-tmux send-key -t $current_session_name.3 \
-  "htop" C-m
+tmux send-key "htop" C-m
