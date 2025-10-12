@@ -4,6 +4,9 @@
 current_session_name=$(tmux list-sessions | grep attached | cut -d ":" -f 1)
 
 # pane 1
+minimum_height=30
+[ $(tmux display -p '#{pane_height}') -lt $minimum_height ] && tmux resize-pane -y $minimum_height
+
 tmux send-key "btop -u 500" C-m
 
 # pane 2
