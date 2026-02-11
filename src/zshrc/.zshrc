@@ -224,6 +224,9 @@ addpath "$HOME/.cabal/bin"
 ## Docker Desktop
 [ -e $HOME/.docker/init-zsh.sh ] && source $HOME/.docker/init-zsh.sh || true
 
+## Maestro
+[ -e $HOME/.maestro/bin ] && addpath "$HOME/.maestro/bin"
+
 ## Temporary local binary
 addpath "$HOME/bin"
 
