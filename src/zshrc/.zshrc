@@ -3,7 +3,7 @@ export DOTFILES_PATH="$HOME/dotfiles"
 ########################################
 # path settings
 addpath() {
-  path=("$1" $path)
+	path=("$1" $path)
 }
 typeset -U path PATH
 
@@ -27,7 +27,7 @@ zplug "nnao45/zsh-kubectl-completion"
 zplug "gradle/gradle-completion"
 
 if ! zplug check --verbose; then
-  zplug install
+	zplug install
 fi
 zplug load
 
@@ -102,25 +102,25 @@ alias sudo='sudo '
 ########################################
 # coreutils for Mac
 if type brew >/dev/null; then
-  addpath "$(brew --prefix coreutils)/libexec/gnubin"
+	addpath "$(brew --prefix coreutils)/libexec/gnubin"
 fi
 
 ########################################
 # dircolors setting
 if type dircolors >/dev/null; then
-  eval $(dircolors ~/.dircolors)
+	eval $(dircolors ~/.dircolors)
 
-  if [ -n "$LS_COLORS" ]; then
-    zstyle ':completion:*' list-colors $(echo "$LS_COLORS" | sed -e "s/:/ /g")
-  fi
+	if [ -n "$LS_COLORS" ]; then
+		zstyle ':completion:*' list-colors $(echo "$LS_COLORS" | sed -e "s/:/ /g")
+	fi
 fi
 
 ########################################
 # gpg-agent
 if type gpgconf >/dev/null; then
-  export GPG_TTY=$(tty)
-  gpgconf --launch gpg-agent
-  export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+	export GPG_TTY=$(tty)
+	gpgconf --launch gpg-agent
+	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 fi
 
 ########################################
@@ -128,47 +128,47 @@ fi
 ## ls alias
 alias ll='ls -alh'
 if type eza >/dev/null; then
-  BASIC_OPTIONS="--icons --classify --sort=type "
-  alias ls="eza $BASIC_OPTIONS"
-  alias ll="eza $BASIC_OPTIONS -alhg --git --time-style=long-iso"
+	BASIC_OPTIONS="--icons --classify --sort=type "
+	alias ls="eza $BASIC_OPTIONS"
+	alias ll="eza $BASIC_OPTIONS -alhg --git --time-style=long-iso"
 fi
 
 ## ezacolors
 EZA_COLORS_FILE="$HOME/.ezacolors"
 if [ -e $EZA_COLORS_FILE ]; then
-  export EZA_COLORS=$(
-    cat $EZA_COLORS_FILE |
-      grep -v -e "^#" |
-      grep -v -e "^$" |
-      xargs echo |
-      sed -e "s/ /:/g"
-  )
+	export EZA_COLORS=$(
+		cat $EZA_COLORS_FILE |
+			grep -v -e "^#" |
+			grep -v -e "^$" |
+			xargs echo |
+			sed -e "s/ /:/g"
+	)
 fi
 
 ########################################
 # powerline-go
 function powerline_precmd() {
-  PS1="$(
-    $POWERLINE_GO_DIR/$POWERLINE_GO_BIN \
-      -shell zsh \
-      -modules 'ssh,git,cwd' \
-      -cwd-mode plain \
-      -east-asian-width \
-      -alternate-ssh-icon
-  )"
+	PS1="$(
+		$POWERLINE_GO_DIR/$POWERLINE_GO_BIN \
+			-shell zsh \
+			-modules 'ssh,git,cwd' \
+			-cwd-mode plain \
+			-east-asian-width \
+			-alternate-ssh-icon
+	)"
 }
 
 function install_powerline_precmd() {
-  for s in "${precmd_functions[@]}"; do
-    if [ "$s" = "powerline_precmd" ]; then
-      return
-    fi
-  done
-  precmd_functions+=(powerline_precmd)
+	for s in "${precmd_functions[@]}"; do
+		if [ "$s" = "powerline_precmd" ]; then
+			return
+		fi
+	done
+	precmd_functions+=(powerline_precmd)
 }
 
 if [ "$TERM" != "linux" ]; then
-  install_powerline_precmd
+	install_powerline_precmd
 fi
 
 ########################################
@@ -192,10 +192,10 @@ addpath "$N_PREFIX/bin"
 ### uninstall: rm -rf ~/.goenv
 export GOENV_ROOT="$HOME/.goenv"
 if [ -e $GOENV_ROOT ]; then
-  addpath "$GOENV_ROOT/bin"
-  eval "$(goenv init -)"
-  addpath "$GOROOT/bin"
-  addpath "$GOPATH/bin"
+	addpath "$GOENV_ROOT/bin"
+	eval "$(goenv init -)"
+	addpath "$GOROOT/bin"
+	addpath "$GOPATH/bin"
 fi
 
 ## rust
@@ -233,6 +233,6 @@ source $DOTFILES_PATH/src/zshrc/joke.zsh
 ########################################
 # launch tmux
 if type tmux >/dev/null && [ "$TMUX" = "" ]; then
-  tmux a || tmux
-  exit
+	tmux a || tmux
+	exit
 fi
