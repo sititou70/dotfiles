@@ -227,6 +227,9 @@ addpath "$HOME/.cabal/bin"
 ## Maestro
 [ -e $HOME/.maestro/bin ] && addpath "$HOME/.maestro/bin"
 
+## Android Tools
+[ -e $HOME/Android/Sdk/platform-tools ] && addpath "$HOME/Android/Sdk/platform-tools"
+
 ## Temporary local binary
 addpath "$HOME/bin"
 
