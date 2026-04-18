@@ -230,6 +230,9 @@ addpath "$HOME/.cabal/bin"
 ## Android Tools
 [ -e $HOME/Android/Sdk/platform-tools ] && addpath "$HOME/Android/Sdk/platform-tools"
 
+## Claude Code
+[ -e $HOME/.local/bin/claude ] && addpath $HOME/.local/bin
+
 ## Temporary local binary
 addpath "$HOME/bin"
 
