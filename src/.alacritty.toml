@@ -1,0 +1,64 @@
+[window]
+startup_mode = "Maximized"
+option_as_alt = "Both"
+
+[cursor]
+style = { shape = "Beam", blinking = "Always" }
+blink_timeout = 3
+
+# Tango palette/scheme from gnome-terminator (foreground overridden to pure white)
+# https://github.com/gnome-terminator/terminator/blob/a900629b7c6bc4222065dde15f7bb2c69534b5f1/terminatorlib/prefseditor.py
+[colors.primary]
+background = "#000000"
+foreground = "#ffffff"
+
+[colors.normal]
+black   = "#000000"
+red     = "#cc0000"
+green   = "#4e9a06"
+yellow  = "#c4a000"
+blue    = "#3465a4"
+magenta = "#75507b"
+cyan    = "#06989a"
+white   = "#d3d7cf"
+
+[colors.bright]
+black   = "#555753"
+red     = "#ef2929"
+green   = "#8ae234"
+yellow  = "#fce94f"
+blue    = "#729fcf"
+magenta = "#ad7fa8"
+cyan    = "#34e2e2"
+white   = "#eeeeec"
+
+[font]
+size = 16.0
+
+[font.normal]
+family = "HackGen Console NF"
+style = "Regular"
+
+[font.bold]
+family = "HackGen Console NF"
+style = "Bold"
+
+[font.italic]
+family = "HackGen Console NF"
+style = "Regular"
+
+[font.bold_italic]
+family = "HackGen Console NF"
+style = "Bold"
+
+[keyboard]
+bindings = [
+  { key = "+", mods = "Command|Shift", action = "IncreaseFontSize" },
+]
+
+[[hints.enabled]]
+regex = 'https?://[^\s"`<>]+'
+command = "open"
+post_processing = true
+mouse = { enabled = true, mods = "Command" }
+binding = { key = "O", mods = "Command|Shift" }

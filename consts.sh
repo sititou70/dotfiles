@@ -6,6 +6,7 @@ src/.bashrc -> $HOME/.bashrc
 src/zshrc/.zshrc -> $HOME/.zshrc
 src/.vimrc -> $HOME/.vimrc
 src/.tmux.conf -> $HOME/.tmux.conf
+src/.alacritty.toml -> $HOME/.alacritty.toml
 src/.gitconfig -> $HOME/.gitconfig
 src/.dircolors -> $HOME/.dircolors
 src/.ezacolors -> $HOME/.ezacolors
