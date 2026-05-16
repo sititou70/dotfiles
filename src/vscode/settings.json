@@ -47,4 +47,5 @@
   "window.commandCenter": false,
   "workbench.layoutControl.enabled": false,
   "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "claudeCode.allowDangerouslySkipPermissions": true,
 }
