@@ -1,0 +1,34 @@
+#!/bin/sh
+# Generate a Unicode block scrollbar indicator.
+# Usage: tmux-scrollbar <scroll_position> <history_size> <pane_height>
+#
+# scroll_position: 0 = at bottom (newest), N = scrolled up N lines
+# Thumb position shows where in the total buffer the current viewport is.
+
+scroll_pos=${1:-0}
+history_size=${2:-0}
+pane_height=${3:-24}
+bar_width=50
+
+total=$((history_size + pane_height))
+
+# viewport_top: distance from top of buffer (0 = oldest, total = newest)
+viewport_top=$((history_size - scroll_pos))
+viewport_bottom=$((viewport_top + pane_height))
+
+thumb_start=$((viewport_top * bar_width / total))
+thumb_end=$(((viewport_bottom * bar_width + total - 1) / total))
+
+bar=""
+i=0
+while [ "$i" -lt "$bar_width" ]; do
+	if [ "$i" -ge "$thumb_start" ] && [ "$i" -lt "$thumb_end" ]; then
+		bar="${bar}█"
+	else
+		bar="${bar}░"
+	fi
+	i=$((i + 1))
+done
+
+percent=$(awk "BEGIN { printf \"%04.1f\", $viewport_top * 100 / $total }")
+printf "%s %s%%" "$bar" "$percent"
