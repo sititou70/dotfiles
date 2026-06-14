@@ -48,4 +48,6 @@
   "workbench.layoutControl.enabled": false,
   "workbench.secondarySideBar.defaultVisibility": "hidden",
   "claudeCode.allowDangerouslySkipPermissions": true,
+  "window.menuBarVisibility": "hidden",
+  "workbench.editor.useModal": "off",
 }
