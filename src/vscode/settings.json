@@ -50,4 +50,5 @@
   "claudeCode.allowDangerouslySkipPermissions": true,
   "window.menuBarVisibility": "hidden",
   "workbench.editor.useModal": "off",
+  "claudeCode.useCtrlEnterToSend": true,
 }
