@@ -117,10 +117,13 @@ fi
 
 ########################################
 # gpg-agent
-if type gpgconf >/dev/null; then
+if type gpgconf >/dev/null && type tty >/dev/null; then
 	export GPG_TTY=$(tty)
 	gpgconf --launch gpg-agent
 	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+	if type gpg-connect-agent >/dev/null; then
+		gpg-connect-agent updatestartuptty /bye >/dev/null 2>&1
+	fi
 fi
 
 ########################################
