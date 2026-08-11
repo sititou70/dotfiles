@@ -1,0 +1,14 @@
+#!/bin/bash
+set -eu
+
+# code が記憶したディレクトリごとの起動方法(local / devcontainer)を消す
+
+state_file="${XDG_STATE_HOME:-$HOME/.local/state}/code/launch-targets"
+[ -f "$state_file" ] || exit 0
+
+dir="$(cd "${1-.}" && pwd)"
+
+grep -vF "$dir	" "$state_file" >"$state_file.tmp" || true
+mv "$state_file.tmp" "$state_file"
+
+echo "cleared: $dir"

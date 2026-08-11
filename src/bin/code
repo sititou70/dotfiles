@@ -1,0 +1,46 @@
+#!/bin/bash
+set -eu
+
+# ディレクトリごとに local / devcontainer のどちらで開いたかを記憶する code のラッパー
+# 記憶を消すには code-clear-dir-state を使う
+
+state_file="${XDG_STATE_HOME:-$HOME/.local/state}/code/launch-targets"
+
+self_dir="$(cd "$(dirname "$0")" && pwd)"
+code_bin="$(PATH="$(echo "$PATH" | tr : '\n' | grep -vxF "$self_dir" | paste -sd:)" command -v code)"
+
+# ディレクトリを1つ開く形でなければ本来の code に委譲する
+if [ $# -ne 1 ] || [ ! -d "$1" ]; then
+	exec "$code_bin" "$@"
+fi
+
+dir="$(cd "$1" && pwd)"
+config="$dir/.devcontainer/devcontainer.json"
+[ -f "$config" ] || config="$dir/.devcontainer.json"
+
+mkdir -p "$(dirname "$state_file")"
+touch "$state_file"
+mode="$(grep -F "$dir	" "$state_file" | cut -f 2 || true)"
+
+if [ -z "$mode" ]; then
+	if [ ! -f "$config" ]; then
+		mode="local"
+	else
+		# 選択をキャンセルした場合は fzf が異常終了し、set -e により何もせず終了する
+		mode="$(printf "local\ndevcontainer\n" | fzf)"
+	fi
+
+	printf '%s\t%s\n' "$dir" "$mode" >>"$state_file"
+fi
+
+if [ "$mode" = "local" ]; then
+	exec "$code_bin" "$dir"
+fi
+
+workspace_folder="$(jq -r '.workspaceFolder // empty' "$config" 2>/dev/null || true)"
+[ -n "$workspace_folder" ] || workspace_folder="/workspaces/$(basename "$dir")"
+authority="$(
+	printf '{"hostPath":"%s","configFile":{"$mid":1,"scheme":"file","path":"%s"}}' "$dir" "$config" |
+		od -A n -t x1 -v | tr -d ' \n'
+)"
+exec "$code_bin" --folder-uri "vscode-remote://dev-container+$authority$workspace_folder"
