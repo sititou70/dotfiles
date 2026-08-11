@@ -2,14 +2,12 @@
   "workbench.startupEditor": "newUntitledFile",
   "editor.fontSize": 16,
   "editor.tabSize": 2,
-  "C_Cpp.updateChannel": "Insiders",
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "editor.formatOnSave": true,
   "editor.parameterHints.enabled": false,
   "editor.suggestSelection": "first",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
@@ -23,7 +21,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "extensions.ignoreRecommendations": true,
-  "go.toolsManagement.autoUpdate": true,
   "explorer.confirmDelete": false,
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -36,10 +33,7 @@
   "editor.fontFamily": "HackGen Console NF",
   "window.restoreFullscreen": true,
   "editor.accessibilitySupport": "off",
-  "emmet.showExpandedAbbreviation": "never",
   "markdown-preview-enhanced.previewTheme": "github-dark.css",
-  "codesnap.showWindowControls": false,
-  "codesnap.showWindowTitle": true,
   "editor.stickyScroll.enabled": false,
   "workbench.tree.enableStickyScroll": false,
   "files.insertFinalNewline": true,
