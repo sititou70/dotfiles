@@ -46,4 +46,6 @@
   "workbench.editor.useModal": "off",
   "claudeCode.useCtrlEnterToSend": true,
   "remote.autoForwardPortsSource": "hybrid",
+  "claudeCode.hideOnboarding": true,
+  "claudeCode.lockEditorGroups": false,
 }
