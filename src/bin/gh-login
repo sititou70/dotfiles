@@ -1,0 +1,5 @@
+#!/bin/bash
+set -euo pipefail
+
+# Git の認証は SSH（gpg-agent）に任せるので、gh には GitHub の操作用にログインだけさせる
+exec gh auth login --hostname github.com --git-protocol ssh --skip-ssh-key --web --insecure-storage "$@"
