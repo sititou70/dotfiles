@@ -3,11 +3,20 @@ set -eu
 
 # ディレクトリごとに local / devcontainer のどちらで開いたかを記憶する code のラッパー
 # 記憶を消すには code-clear-dir-state を使う
+# code <dir> --claude で開くと Claude Code の新しいセッションも 1 つ開く
 
 state_file="${XDG_STATE_HOME:-$HOME/.local/state}/code/launch-targets"
+claude_session_url="vscode://anthropic.claude-code/open"
+wait_seconds=300
 
 self_dir="$(cd "$(dirname "$0")" && pwd)"
 code_bin="$(PATH="$(echo "$PATH" | tr : '\n' | grep -vxF "$self_dir" | paste -sd:)" command -v code)"
+
+open_claude=false
+if [ $# -eq 2 ] && [ -d "$1" ] && [ "$2" = "--claude" ]; then
+	open_claude=true
+	set -- "$1"
+fi
 
 # ディレクトリを1つ開く形でなければ本来の code に委譲する
 if [ $# -ne 1 ] || [ ! -d "$1" ]; then
@@ -15,6 +24,43 @@ if [ $# -ne 1 ] || [ ! -d "$1" ]; then
 fi
 
 dir="$(cd "$1" && pwd)"
+
+is_devcontainer_ready() {
+	local container
+	container="$(docker ps -q --filter "label=devcontainer.local_folder=$dir" | head -n 1)"
+	[ -n "$container" ] || return 1
+
+	# Claude Code 拡張のインストールと拡張ホストの起動を確認する
+	timeout 10 docker exec "$container" sh -c '
+		find /root /home -maxdepth 5 -path "*/.vscode-server/extensions/anthropic.claude-code-*/package.json" 2>/dev/null | grep -q . &&
+			cat /proc/[0-9]*/environ 2>/dev/null | tr "\0" "\n" | grep -q "^VSCODE_IPC_HOOK_CLI="
+	' 2>/dev/null
+}
+
+launch() {
+	if [ "$open_claude" = false ]; then
+		exec "$code_bin" "$@"
+	fi
+
+	"$code_bin" "$@"
+
+	if [ "$mode" = "devcontainer" ]; then
+		local waited=0
+		until is_devcontainer_ready; do
+			if [ "$waited" -ge "$wait_seconds" ]; then
+				echo "code: 開発コンテナの準備が ${wait_seconds} 秒以内に完了しませんでした" >&2
+				exit 1
+			fi
+			waited=$((waited + 1))
+			sleep 1
+		done
+	fi
+
+	# 拡張ホストの起動直後は URL を処理できないことがあるので少し待つ
+	sleep 5
+
+	exec "$code_bin" --open-url "$claude_session_url"
+}
 config="$dir/.devcontainer/devcontainer.json"
 [ -f "$config" ] || config="$dir/.devcontainer.json"
 
@@ -34,7 +80,7 @@ if [ -z "$mode" ]; then
 fi
 
 if [ "$mode" = "local" ]; then
-	exec "$code_bin" "$dir"
+	launch "$dir"
 fi
 
 workspace_folder="$(jq -r '.workspaceFolder // empty' "$config" 2>/dev/null || true)"
@@ -43,4 +89,4 @@ authority="$(
 	printf '{"hostPath":"%s","configFile":{"$mid":1,"scheme":"file","path":"%s"}}' "$dir" "$config" |
 		od -A n -t x1 -v | tr -d ' \n'
 )"
-exec "$code_bin" --folder-uri "vscode-remote://dev-container+$authority$workspace_folder"
+launch --folder-uri "vscode-remote://dev-container+$authority$workspace_folder"
